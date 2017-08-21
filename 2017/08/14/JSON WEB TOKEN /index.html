@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="已安装好node express 以下为普通登录返回token的操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162//安装模块npm i jwt-simple --save//使用模块const jwt = req">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NODE.JS EXPRESS JWT Token">
+<meta property="og:url" content="cgeraj.github.io/2017/08/14/JSON WEB TOKEN /index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="已安装好node express 以下为普通登录返回token的操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162//安装模块npm i jwt-simple --save//使用模块const jwt = req">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="cgeraj.github.io/2017/08/14/JSON%20WEB%20TOKEN%20/token.png">
+<meta property="og:updated_time" content="2017-08-20T23:58:19.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="NODE.JS EXPRESS JWT Token">
+<meta name="twitter:description" content="已安装好node express 以下为普通登录返回token的操作1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162//安装模块npm i jwt-simple --save//使用模块const jwt = req">
+<meta name="twitter:image" content="cgeraj.github.io/2017/08/14/JSON%20WEB%20TOKEN%20/token.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="cgeraj.github.io/2017/08/14/JSON WEB TOKEN /"/>
+
+
+
+
+
+  <title>NODE.JS EXPRESS JWT Token | Hexo</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?59ac6c89104e6e46921e6de15b56db51";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">CGerAJ Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="cgeraj.github.io/2017/08/14/JSON WEB TOKEN /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CGerAJ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">NODE.JS EXPRESS JWT Token</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-14T10:07:21+08:00">
+                2017-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p><img src="./token.png" alt=""></p>
+<h3 id="已安装好node-express-以下为普通登录返回token的操作"><a href="#已安装好node-express-以下为普通登录返回token的操作" class="headerlink" title="已安装好node express 以下为普通登录返回token的操作"></a>已安装好node express 以下为普通登录返回token的操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">//安装模块</div><div class="line">npm i jwt-simple --save</div><div class="line">//使用模块</div><div class="line">const jwt = require(&apos;jwt-simple&apos;);</div><div class="line">//需要使用express</div><div class="line">var app = express();</div><div class="line">//设置秘钥</div><div class="line">app.set(&apos;jwtTokenSecret&apos;, &apos;CGerAJ&apos;);</div><div class="line"></div><div class="line">// @file login.js  ajax请求login地址获取token 此处/指向的是login接口</div><div class="line">router.post(&apos;/&apos;, function(req, res, next) &#123;</div><div class="line"></div><div class="line">// 开发环境设置跨域访问</div><div class="line">res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</div><div class="line">res.header(&apos;Access-Control-Allow-Methods&apos;, &apos;PUT, GET, POST, DELETE, OPTIONS&apos;);</div><div class="line">res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);</div><div class="line">res.header(&apos;Access-Control-Allow-Headers&apos;, &apos;Content-Type&apos;);</div><div class="line"></div><div class="line">  // 后端验证判断名字或者密码是否为空 这里使用的是明文 部署环境需要使用加密算法传输</div><div class="line">  if (!req.body.names || !req.body.password ) &#123;</div><div class="line">    return res.status(400).send(&quot;用户名或者密码不能为空！&quot;);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  // 查数据库</div><div class="line">  User.findOne(&#123; username: req.body.names &#125;, function(err, user) &#123;</div><div class="line">  </div><div class="line">	    if (err) &#123;</div><div class="line">	      // 如果报错</div><div class="line">	      return res.sendStatus(401).json(&#123; success: false&#125;);</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">	    if (!user) &#123;</div><div class="line">	      // 用户没找到的情况</div><div class="line">	      return res.sendStatus(401).json(&#123; success: false&#125;);</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">	    if ( req.body.password !== user.userpwd) &#123;</div><div class="line">	      // 密码不对的情况</div><div class="line">	      return res.sendStatus(401).json(&#123; success: false&#125;);</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">	    // 过期时间 一般设置为小时 此处为天</div><div class="line">	    var expires = moment().add(&apos;days&apos;, 1).valueOf();</div><div class="line">	    </div><div class="line">	    // 验证通过 执行token生成</div><div class="line">	    var token = jwt.encode(&#123;</div><div class="line">	        iss: user.username,</div><div class="line">	        exp: expires</div><div class="line">      &#125;,</div><div class="line">      app.get(&apos;jwtTokenSecret&apos;));</div><div class="line">     res.status(200).json(&#123; </div><div class="line">	     success: true,</div><div class="line">	     token : token,</div><div class="line">	     expires: expires,</div><div class="line">	     user: user.toJSON()</div><div class="line">     &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">前端根据返回的token 存到本地 跳转页面  单页面路由跳转前端验证token是否存在 不存在返回登录页</div><div class="line">localStorage.token=data.token;</div><div class="line">window.location.href = &quot;http://localhost:8080/view/user&quot;;</div></pre></td></tr></table></figure>
+<h3 id="前端请求接口"><a href="#前端请求接口" class="headerlink" title="前端请求接口"></a>前端请求接口</h3><p>请求数据带上token</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$(&quot;#submit&quot;).click(function(event) &#123;</div><div class="line">	var token = window.localStorage.getItem(&apos;token&apos;);</div><div class="line">	if (token) &#123;</div><div class="line">		$.ajax(&#123;</div><div class="line">				url: &apos;http://localhost:3001/data&apos;,</div><div class="line">				type: &apos;POST&apos;,</div><div class="line">				dataType: &apos;JSON&apos;,</div><div class="line">				data: &#123;</div><div class="line">					token: token</div><div class="line">				&#125;,</div><div class="line">			&#125;)</div><div class="line">			.done(function(data) &#123;</div><div class="line">				console.log(data);</div><div class="line">				//返回数据的操作</div><div class="line">				console.log(&quot;success&quot;);</div><div class="line">			&#125;)</div><div class="line">			.fail(function() &#123;</div><div class="line">				console.log(&quot;error&quot;);</div><div class="line">			&#125;)</div><div class="line">			.always(function() &#123;</div><div class="line">				console.log(&quot;complete&quot;);</div><div class="line">			&#125;);</div><div class="line">	&#125; else &#123;</div><div class="line">		window.location.href = &apos;http://localhost:8080/view/login&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="TOKEN过期处理"><a href="#TOKEN过期处理" class="headerlink" title="TOKEN过期处理"></a>TOKEN过期处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h4 id="验证Token"><a href="#验证Token" class="headerlink" title="验证Token"></a>验证Token</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 验证token</div><div class="line"> * @return Boolean | true || false</div><div class="line"> */</div><div class="line">function checkToken(token)&#123;</div><div class="line">	//过期时间验证 返回布尔值Boolean</div><div class="line">	//如果过期Expired</div><div class="line">	if( Expired )&#123;</div><div class="line">	    //先生成新的token 如果生成失败 return;</div><div class="line">	    newToken(username,secret);</div><div class="line">		//把过期的token添加黑名单</div><div class="line">		addToBlacklist();</div><div class="line">		//返回一个新的token回前端</div><div class="line">		parseToken();</div><div class="line">	&#125;else&#123;</div><div class="line">	//token未过期返回Boolean true</div><div class="line">    return true;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h4 id="将旧的Token加入黑名单"><a href="#将旧的Token加入黑名单" class="headerlink" title="将旧的Token加入黑名单"></a>将旧的Token加入黑名单</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 添加当前token到黑名单</div><div class="line"> */</div><div class="line">function addToBlacklist(token)&#123;</div><div class="line">   //加入到黑名单</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="生成一个新的Token"><a href="#生成一个新的Token" class="headerlink" title="生成一个新的Token"></a>生成一个新的Token</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 生成一个新的token</div><div class="line"> * @param username secret</div><div class="line"> * @return  Token | string</div><div class="line"> */</div><div class="line">function newToken(username,secret)&#123;</div><div class="line">  //生成新Token</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="返回Token到前台"><a href="#返回Token到前台" class="headerlink" title="返回Token到前台"></a>返回Token到前台</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 从请求解析返回Token</div><div class="line"> * @return Token</div><div class="line"> * @throws TokenNotFoundException</div><div class="line"> */</div><div class="line">function parseToken()&#123;</div><div class="line">  //解析返回</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/08/08/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/08/20/网络安全/" rel="prev" title="网络安全入门（信息收集）">
+                网络安全入门（信息收集） <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="CGerAJ" />
+          <p class="site-author-name" itemprop="name">CGerAJ</p>
+           
+              <p class="site-description motion-element" itemprop="description">学而不思则罔 思而不学则殆</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#已安装好node-express-以下为普通登录返回token的操作"><span class="nav-number">1.</span> <span class="nav-text">已安装好node express 以下为普通登录返回token的操作</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#前端请求接口"><span class="nav-number">2.</span> <span class="nav-text">前端请求接口</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TOKEN过期处理"><span class="nav-number">3.</span> <span class="nav-text">TOKEN过期处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#验证Token"><span class="nav-number">3.1.</span> <span class="nav-text">验证Token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#将旧的Token加入黑名单"><span class="nav-number">3.2.</span> <span class="nav-text">将旧的Token加入黑名单</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#生成一个新的Token"><span class="nav-number">3.3.</span> <span class="nav-text">生成一个新的Token</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#返回Token到前台"><span class="nav-number">3.4.</span> <span class="nav-text">返回Token到前台</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CGerAJ</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

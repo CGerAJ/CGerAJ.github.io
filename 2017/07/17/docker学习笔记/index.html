@@ -94,17 +94,17 @@
 
 
 
-<meta name="description" content="安装Docker -&amp;gt; 下载镜像 -&amp;gt; 使用Dockerfile定制镜像 -&amp;gt; 构建镜像 -&amp;gt; 用构建的镜像启动容器 -&amp;gt;下载镜像从Docker Registry 获取镜像的命令 docker pull 1docker pull [选项] [Docker Registry地址] &amp;lt;仓库名&amp;gt;:&amp;lt;标签&amp;gt;  Docker Registry地址格式 域">
+<meta name="description" content="安装Docker -&amp;gt; 下载镜像 -&amp;gt; 使用Dockerfile定制镜像 -&amp;gt; 构建镜像 -&amp;gt; 用构建的镜像启动容器 -&amp;gt; 数据交互 -&amp;gt; 容器互联下载镜像从Docker Registry 获取镜像的命令 docker pull 1docker pull [选项] [Docker Registry地址] &amp;lt;仓库名&amp;gt;:&amp;lt;标签&amp;gt;  Docke">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="docker 学习笔记">
 <meta property="og:url" content="cgeraj.github.io/2017/07/17/docker学习笔记/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="安装Docker -&amp;gt; 下载镜像 -&amp;gt; 使用Dockerfile定制镜像 -&amp;gt; 构建镜像 -&amp;gt; 用构建的镜像启动容器 -&amp;gt;下载镜像从Docker Registry 获取镜像的命令 docker pull 1docker pull [选项] [Docker Registry地址] &amp;lt;仓库名&amp;gt;:&amp;lt;标签&amp;gt;  Docker Registry地址格式 域">
+<meta property="og:description" content="安装Docker -&amp;gt; 下载镜像 -&amp;gt; 使用Dockerfile定制镜像 -&amp;gt; 构建镜像 -&amp;gt; 用构建的镜像启动容器 -&amp;gt; 数据交互 -&amp;gt; 容器互联下载镜像从Docker Registry 获取镜像的命令 docker pull 1docker pull [选项] [Docker Registry地址] &amp;lt;仓库名&amp;gt;:&amp;lt;标签&amp;gt;  Docke">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-02T01:40:59.000Z">
+<meta property="og:updated_time" content="2017-08-21T00:05:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description" content="安装Docker -&amp;gt; 下载镜像 -&amp;gt; 使用Dockerfile定制镜像 -&amp;gt; 构建镜像 -&amp;gt; 用构建的镜像启动容器 -&amp;gt;下载镜像从Docker Registry 获取镜像的命令 docker pull 1docker pull [选项] [Docker Registry地址] &amp;lt;仓库名&amp;gt;:&amp;lt;标签&amp;gt;  Docker Registry地址格式 域">
+<meta name="twitter:title" content="docker 学习笔记">
+<meta name="twitter:description" content="安装Docker -&amp;gt; 下载镜像 -&amp;gt; 使用Dockerfile定制镜像 -&amp;gt; 构建镜像 -&amp;gt; 用构建的镜像启动容器 -&amp;gt; 数据交互 -&amp;gt; 容器互联下载镜像从Docker Registry 获取镜像的命令 docker pull 1docker pull [选项] [Docker Registry地址] &amp;lt;仓库名&amp;gt;:&amp;lt;标签&amp;gt;  Docke">
 
 
 
@@ -139,7 +139,7 @@
 
 
 
-  <title> | Hexo</title>
+  <title>docker 学习笔记 | Hexo</title>
   
 
 
@@ -329,7 +329,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline"></h1>
+          <h1 class="post-title" itemprop="name headline">docker 学习笔记</h1>
         
 
         <div class="post-meta">
@@ -379,7 +379,7 @@
       
 
       
-        <h2 id="安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt"><a href="#安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt" class="headerlink" title="安装Docker -&gt; 下载镜像 -&gt; 使用Dockerfile定制镜像 -&gt; 构建镜像 -&gt; 用构建的镜像启动容器 -&gt;"></a>安装Docker -&gt; 下载镜像 -&gt; 使用Dockerfile定制镜像 -&gt; 构建镜像 -&gt; 用构建的镜像启动容器 -&gt;</h2><h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>从Docker Registry 获取镜像的命令 docker pull</p>
+        <h2 id="安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt-数据交互-gt-容器互联"><a href="#安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt-数据交互-gt-容器互联" class="headerlink" title="安装Docker -&gt; 下载镜像 -&gt; 使用Dockerfile定制镜像 -&gt; 构建镜像 -&gt; 用构建的镜像启动容器 -&gt; 数据交互 -&gt; 容器互联"></a>安装Docker -&gt; 下载镜像 -&gt; 使用Dockerfile定制镜像 -&gt; 构建镜像 -&gt; 用构建的镜像启动容器 -&gt; 数据交互 -&gt; 容器互联</h2><h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>从Docker Registry 获取镜像的命令 docker pull</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull [选项] [Docker Registry地址] &lt;仓库名&gt;:&lt;标签&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>Docker Registry地址格式 域名:端口号</li>
@@ -528,7 +528,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -567,7 +567,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt"><span class="nav-number">1.</span> <span class="nav-text">安装Docker -> 下载镜像 -> 使用Dockerfile定制镜像 -> 构建镜像 -> 用构建的镜像启动容器 -></span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载镜像"><span class="nav-number">2.</span> <span class="nav-text">下载镜像</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">Hello, Docker!</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#USER-指定当前用户"><span class="nav-number">0.1.</span> <span class="nav-text">USER 指定当前用户</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt-数据交互-gt-容器互联"><span class="nav-number">1.</span> <span class="nav-text">安装Docker -> 下载镜像 -> 使用Dockerfile定制镜像 -> 构建镜像 -> 用构建的镜像启动容器 -> 数据交互 -> 容器互联</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下载镜像"><span class="nav-number">2.</span> <span class="nav-text">下载镜像</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">Hello, Docker!</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#USER-指定当前用户"><span class="nav-number">0.1.</span> <span class="nav-text">USER 指定当前用户</span></a></li></ol></li></ol></div>
             
 
           </div>

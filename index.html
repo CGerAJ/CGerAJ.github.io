@@ -313,6 +313,329 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="cgeraj.github.io/2017/08/20/网络安全/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CGerAJ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/20/网络安全/" itemprop="url">网络安全入门（信息收集）</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-20T22:02:28+08:00">
+                2017-08-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>###google浏览器搜索技巧</p>
+<p>####常用的googlehacking语法：</p>
+<ul>
+<li>intext:要搜索的内容  把网页中的正文内容中的某个字符作为搜索条件</li>
+<li>intitle:要搜索的内容  把标题中的某个字符作为搜索条件</li>
+<li>cache:要搜索的内容 搜索引擎关于某些内容的缓存 可能发现有价值的信息</li>
+<li>filetype:要搜索的内容 指定一个格式类型的文件作为搜索条件</li>
+<li>inurl:要搜索的内容 inurl:php?id=  inurl:jsp?id= 搜索包含指定字符的URL</li>
+<li>site:要搜索的内容 在指定的站点搜索相关内容</li>
+<li>引号” “ 吧关键字打上引号后把引号部分作为整体来搜索</li>
+<li>or  同事搜索两个或者更多的关键词</li>
+<li><p>link 搜索某个网站的链接</p>
+</li>
+<li><p>组合使用 intitle:admin  inurl:admin</p>
+</li>
+<li>组合 intitle:海尔 inurl:php?id=</li>
+</ul>
+<h4 id="典型用法"><a href="#典型用法" class="headerlink" title="典型用法"></a>典型用法</h4><p>1.找管理后台地址</p>
+<ul>
+<li>site:xxx.com intext:管理|后台|登录|用户名|密码|系统|账号</li>
+<li>site:xxx.com inurl:login|admin|manage| manager|admin_login|system</li>
+<li>site:xxx.com intitle:管理|后台|登录</li>
+</ul>
+<p>2.找上传类漏洞</p>
+<ul>
+<li>site:xxx.com inurl:file</li>
+<li>site:xxx.com inurl:upload</li>
+</ul>
+<p>3.找注入页面：</p>
+<ul>
+<li>site:xxx.com inurl:php?id=</li>
+</ul>
+<p>4.找编辑器页面</p>
+<ul>
+<li>site:xxx.com inurl:ewebeditor</li>
+</ul>
+<h2 id="使用站长工具对目标站点进行信息收集"><a href="#使用站长工具对目标站点进行信息收集" class="headerlink" title="使用站长工具对目标站点进行信息收集"></a>使用站长工具对目标站点进行信息收集</h2><ul>
+<li>IP查询</li>
+<li>同IP查询</li>
+<li>WHOIS查询和反查</li>
+<li>子域名查询</li>
+<li>识别服务器类型，页面类型</li>
+<li>DNS信息查询</li>
+<li>网站安全检测</li>
+<li>端口扫描</li>
+</ul>
+<p>邮箱活动查询</p>
+<ul>
+<li><a href="http://www.0xreg.com" target="_blank" rel="external">灵查注册</a> (亲测不能用了)主要查询邮箱进行的一些活动</li>
+<li><a href="http://www.reg007.com" target="_blank" rel="external">查询注册过的邮箱</a></li>
+</ul>
+<p>##漏洞信息收集</p>
+<h4 id="漏洞平台寻找漏洞信息"><a href="#漏洞平台寻找漏洞信息" class="headerlink" title="漏洞平台寻找漏洞信息"></a>漏洞平台寻找漏洞信息</h4><ul>
+<li>乌云漏洞平台 已暂停</li>
+<li><a href="https://security.360.cn/" target="_blank" rel="external">360补天漏洞平台</a></li>
+<li><a href="https://www.exploit-db.com/" target="_blank" rel="external">Exploit-DB</a></li>
+<li><a href="https://www.exploit-db.com/google-hacking-database/" target="_blank" rel="external">GHDB</a></li>
+<li><a href="http://cve.scap.org.cn/" target="_blank" rel="external">CVE中文漏洞信息库</a></li>
+<li><a href="http://www.cnnvd.org.cn" target="_blank" rel="external">中国国家信息安全漏洞库</a></li>
+<li><a href="http://www.cert.org.cn/" target="_blank" rel="external">国家互联网应急中心</a></li>
+</ul>
+<h4 id="使用搜索引擎搜索漏洞-文件类上传类等等"><a href="#使用搜索引擎搜索漏洞-文件类上传类等等" class="headerlink" title="使用搜索引擎搜索漏洞 文件类上传类等等"></a>使用搜索引擎搜索漏洞 文件类上传类等等</h4><p>###使用工具手机信息</p>
+<p>常用的DOS命令</p>
+<ul>
+<li>ping 网络连通测试</li>
+<li>arp    arp -a 显示和修改地址解析协议</li>
+<li>tracert  tracert www.baidu.com  本机连接到百度所需要的路由</li>
+<li>nslookup 域名系统查询</li>
+<li>telnet  telnet：地址 测试是否开启远程连接</li>
+<li>netstat 查看本地及其所有开放端口</li>
+<li>nbtstat 获取NetBIOS信息</li>
+<li>ftp 测试开放了ftp的远程主机</li>
+<li>net 最重要的命令 需要透彻掌握每一个自命令</li>
+</ul>
+<p>御剑扫描工具</p>
+<p>扫描站点<br>moonsos.com<br>secbuf.com</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="cgeraj.github.io/2017/08/14/JSON WEB TOKEN /">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CGerAJ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/08/14/JSON WEB TOKEN /" itemprop="url">NODE.JS EXPRESS JWT Token</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-08-14T10:07:21+08:00">
+                2017-08-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p><img src="./token.png" alt=""></p>
+<h3 id="已安装好node-express-以下为普通登录返回token的操作"><a href="#已安装好node-express-以下为普通登录返回token的操作" class="headerlink" title="已安装好node express 以下为普通登录返回token的操作"></a>已安装好node express 以下为普通登录返回token的操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div></pre></td><td class="code"><pre><div class="line">//安装模块</div><div class="line">npm i jwt-simple --save</div><div class="line">//使用模块</div><div class="line">const jwt = require(&apos;jwt-simple&apos;);</div><div class="line">//需要使用express</div><div class="line">var app = express();</div><div class="line">//设置秘钥</div><div class="line">app.set(&apos;jwtTokenSecret&apos;, &apos;CGerAJ&apos;);</div><div class="line"></div><div class="line">// @file login.js  ajax请求login地址获取token 此处/指向的是login接口</div><div class="line">router.post(&apos;/&apos;, function(req, res, next) &#123;</div><div class="line"></div><div class="line">// 开发环境设置跨域访问</div><div class="line">res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</div><div class="line">res.header(&apos;Access-Control-Allow-Methods&apos;, &apos;PUT, GET, POST, DELETE, OPTIONS&apos;);</div><div class="line">res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);</div><div class="line">res.header(&apos;Access-Control-Allow-Headers&apos;, &apos;Content-Type&apos;);</div><div class="line"></div><div class="line">  // 后端验证判断名字或者密码是否为空 这里使用的是明文 部署环境需要使用加密算法传输</div><div class="line">  if (!req.body.names || !req.body.password ) &#123;</div><div class="line">    return res.status(400).send(&quot;用户名或者密码不能为空！&quot;);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  // 查数据库</div><div class="line">  User.findOne(&#123; username: req.body.names &#125;, function(err, user) &#123;</div><div class="line">  </div><div class="line">	    if (err) &#123;</div><div class="line">	      // 如果报错</div><div class="line">	      return res.sendStatus(401).json(&#123; success: false&#125;);</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">	    if (!user) &#123;</div><div class="line">	      // 用户没找到的情况</div><div class="line">	      return res.sendStatus(401).json(&#123; success: false&#125;);</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">	    if ( req.body.password !== user.userpwd) &#123;</div><div class="line">	      // 密码不对的情况</div><div class="line">	      return res.sendStatus(401).json(&#123; success: false&#125;);</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">	    // 过期时间 一般设置为小时 此处为天</div><div class="line">	    var expires = moment().add(&apos;days&apos;, 1).valueOf();</div><div class="line">	    </div><div class="line">	    // 验证通过 执行token生成</div><div class="line">	    var token = jwt.encode(&#123;</div><div class="line">	        iss: user.username,</div><div class="line">	        exp: expires</div><div class="line">      &#125;,</div><div class="line">      app.get(&apos;jwtTokenSecret&apos;));</div><div class="line">     res.status(200).json(&#123; </div><div class="line">	     success: true,</div><div class="line">	     token : token,</div><div class="line">	     expires: expires,</div><div class="line">	     user: user.toJSON()</div><div class="line">     &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">前端根据返回的token 存到本地 跳转页面  单页面路由跳转前端验证token是否存在 不存在返回登录页</div><div class="line">localStorage.token=data.token;</div><div class="line">window.location.href = &quot;http://localhost:8080/view/user&quot;;</div></pre></td></tr></table></figure>
+<h3 id="前端请求接口"><a href="#前端请求接口" class="headerlink" title="前端请求接口"></a>前端请求接口</h3><p>请求数据带上token</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$(&quot;#submit&quot;).click(function(event) &#123;</div><div class="line">	var token = window.localStorage.getItem(&apos;token&apos;);</div><div class="line">	if (token) &#123;</div><div class="line">		$.ajax(&#123;</div><div class="line">				url: &apos;http://localhost:3001/data&apos;,</div><div class="line">				type: &apos;POST&apos;,</div><div class="line">				dataType: &apos;JSON&apos;,</div><div class="line">				data: &#123;</div><div class="line">					token: token</div><div class="line">				&#125;,</div><div class="line">			&#125;)</div><div class="line">			.done(function(data) &#123;</div><div class="line">				console.log(data);</div><div class="line">				//返回数据的操作</div><div class="line">				console.log(&quot;success&quot;);</div><div class="line">			&#125;)</div><div class="line">			.fail(function() &#123;</div><div class="line">				console.log(&quot;error&quot;);</div><div class="line">			&#125;)</div><div class="line">			.always(function() &#123;</div><div class="line">				console.log(&quot;complete&quot;);</div><div class="line">			&#125;);</div><div class="line">	&#125; else &#123;</div><div class="line">		window.location.href = &apos;http://localhost:8080/view/login&apos;;</div><div class="line">	&#125;</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<h3 id="TOKEN过期处理"><a href="#TOKEN过期处理" class="headerlink" title="TOKEN过期处理"></a>TOKEN过期处理</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h4 id="验证Token"><a href="#验证Token" class="headerlink" title="验证Token"></a>验证Token</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 验证token</div><div class="line"> * @return Boolean | true || false</div><div class="line"> */</div><div class="line">function checkToken(token)&#123;</div><div class="line">	//过期时间验证 返回布尔值Boolean</div><div class="line">	//如果过期Expired</div><div class="line">	if( Expired )&#123;</div><div class="line">	    //先生成新的token 如果生成失败 return;</div><div class="line">	    newToken(username,secret);</div><div class="line">		//把过期的token添加黑名单</div><div class="line">		addToBlacklist();</div><div class="line">		//返回一个新的token回前端</div><div class="line">		parseToken();</div><div class="line">	&#125;else&#123;</div><div class="line">	//token未过期返回Boolean true</div><div class="line">    return true;</div><div class="line">  &#125;</div></pre></td></tr></table></figure>
+<h4 id="将旧的Token加入黑名单"><a href="#将旧的Token加入黑名单" class="headerlink" title="将旧的Token加入黑名单"></a>将旧的Token加入黑名单</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 添加当前token到黑名单</div><div class="line"> */</div><div class="line">function addToBlacklist(token)&#123;</div><div class="line">   //加入到黑名单</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="生成一个新的Token"><a href="#生成一个新的Token" class="headerlink" title="生成一个新的Token"></a>生成一个新的Token</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 生成一个新的token</div><div class="line"> * @param username secret</div><div class="line"> * @return  Token | string</div><div class="line"> */</div><div class="line">function newToken(username,secret)&#123;</div><div class="line">  //生成新Token</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h4 id="返回Token到前台"><a href="#返回Token到前台" class="headerlink" title="返回Token到前台"></a>返回Token到前台</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">/**</div><div class="line"> * 从请求解析返回Token</div><div class="line"> * @return Token</div><div class="line"> * @throws TokenNotFoundException</div><div class="line"> */</div><div class="line">function parseToken()&#123;</div><div class="line">  //解析返回</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="cgeraj.github.io/2017/08/08/hello-world/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -460,7 +783,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/17/docker学习笔记/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2017/07/17/docker学习笔记/" itemprop="url">docker 学习笔记</a></h1>
         
 
         <div class="post-meta">
@@ -512,7 +835,7 @@
       
         
           
-            <h2 id="安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt"><a href="#安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt" class="headerlink" title="安装Docker -&gt; 下载镜像 -&gt; 使用Dockerfile定制镜像 -&gt; 构建镜像 -&gt; 用构建的镜像启动容器 -&gt;"></a>安装Docker -&gt; 下载镜像 -&gt; 使用Dockerfile定制镜像 -&gt; 构建镜像 -&gt; 用构建的镜像启动容器 -&gt;</h2><h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>从Docker Registry 获取镜像的命令 docker pull</p>
+            <h2 id="安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt-数据交互-gt-容器互联"><a href="#安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt-数据交互-gt-容器互联" class="headerlink" title="安装Docker -&gt; 下载镜像 -&gt; 使用Dockerfile定制镜像 -&gt; 构建镜像 -&gt; 用构建的镜像启动容器 -&gt; 数据交互 -&gt; 容器互联"></a>安装Docker -&gt; 下载镜像 -&gt; 使用Dockerfile定制镜像 -&gt; 构建镜像 -&gt; 用构建的镜像启动容器 -&gt; 数据交互 -&gt; 容器互联</h2><h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>从Docker Registry 获取镜像的命令 docker pull</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull [选项] [Docker Registry地址] &lt;仓库名&gt;:&lt;标签&gt;</div></pre></td></tr></table></figure>
 <ul>
 <li>Docker Registry地址格式 域名:端口号</li>
@@ -633,7 +956,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
