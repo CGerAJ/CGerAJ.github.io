@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="mysql," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="mysql 学习-参考资料 mysql在线参考手册 123456// 管理员登录mysqlmysql -u root -p// 查看mysql版本号和当前日期SELECT VERSION(), CURRENT_DATE;    提示符 含义     mysql&amp;gt; 准备好接受新命令。   -&amp;gt; 等待多行命令的下一行。   ‘&amp;gt; 等待下一行，等待以单引号(“’”)开始的字符串的结束。">
+<meta name="keywords" content="mysql">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mysql 基础学习">
+<meta property="og:url" content="cgeraj.github.io/2017/12/04/mysql学习/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="mysql 学习-参考资料 mysql在线参考手册 123456// 管理员登录mysqlmysql -u root -p// 查看mysql版本号和当前日期SELECT VERSION(), CURRENT_DATE;    提示符 含义     mysql&amp;gt; 准备好接受新命令。   -&amp;gt; 等待多行命令的下一行。   ‘&amp;gt; 等待下一行，等待以单引号(“’”)开始的字符串的结束。">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-02-01T02:38:19.008Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mysql 基础学习">
+<meta name="twitter:description" content="mysql 学习-参考资料 mysql在线参考手册 123456// 管理员登录mysqlmysql -u root -p// 查看mysql版本号和当前日期SELECT VERSION(), CURRENT_DATE;    提示符 含义     mysql&amp;gt; 准备好接受新命令。   -&amp;gt; 等待多行命令的下一行。   ‘&amp;gt; 等待下一行，等待以单引号(“’”)开始的字符串的结束。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="cgeraj.github.io/2017/12/04/mysql学习/"/>
+
+
+
+
+
+  <title>mysql 基础学习 | Hexo</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?59ac6c89104e6e46921e6de15b56db51";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">CGerAJ Blog</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-sitemap">
+          <a href="/sitemap.xml" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-sitemap"></i> <br />
+            
+            站点地图
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-commonweal">
+          <a href="/404/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-heartbeat"></i> <br />
+            
+            公益404
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="cgeraj.github.io/2017/12/04/mysql学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CGerAJ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">mysql 基础学习</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T10:21:14+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="mysql-学习"><a href="#mysql-学习" class="headerlink" title="mysql 学习"></a>mysql 学习</h2><p>-参考资料 <a href="http://img.jb51.net/shouce/mysql/index.html" target="_blank" rel="external">mysql在线参考手册</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 管理员登录mysql</div><div class="line">mysql -u root -p</div><div class="line"></div><div class="line">// 查看mysql版本号和当前日期</div><div class="line"></div><div class="line">SELECT VERSION(), CURRENT_DATE;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>提示符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mysql&gt;</td>
+<td>准备好接受新命令。</td>
+</tr>
+<tr>
+<td>-&gt;</td>
+<td>等待多行命令的下一行。</td>
+</tr>
+<tr>
+<td>‘&gt;</td>
+<td>等待下一行，等待以单引号(“’”)开始的字符串的结束。</td>
+</tr>
+<tr>
+<td>“&gt;</td>
+<td>等待下一行，等待以双引号(“””)开始的字符串的结束。</td>
+</tr>
+<tr>
+<td>`&gt;</td>
+<td>等待下一行，等待以反斜点(” ”)开始的识别符的结束。</td>
+</tr>
+<tr>
+<td>/*&gt;</td>
+<td>等待下一行，等待以 开始的注释的结束。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="创建并使用数据库"><a href="#创建并使用数据库" class="headerlink" title="创建并使用数据库"></a>创建并使用数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">// 显示数据库</div><div class="line">SHOW DATABASES;</div><div class="line"></div><div class="line">// 创建数据库  严格区分大小写</div><div class="line">CREATE DATABASE menagerie;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//创建pet数据表  在DataGrip内编辑</div><div class="line"></div><div class="line">CREATE TABLE pet</div><div class="line">(</div><div class="line">  item_id   INT AUTO_INCREMENT</div><div class="line">  COMMENT &apos;item id&apos;</div><div class="line">    PRIMARY KEY,</div><div class="line">  item_name VARCHAR(20)            NOT NULL</div><div class="line">  COMMENT &apos;命名空间格式&apos;,</div><div class="line">  owner     VARCHAR(20)            NOT NULL</div><div class="line">  COMMENT &apos;owner&apos;,</div><div class="line">  species   VARCHAR(20) DEFAULT &apos;&apos; NOT NULL</div><div class="line">  COMMENT &apos;species&apos;,</div><div class="line">  sex       CHAR                   NOT NULL</div><div class="line">  COMMENT &apos;sex&apos;,</div><div class="line">  birth     DATE                   NOT NULL</div><div class="line">  COMMENT &apos;birth&apos;,</div><div class="line">  death     DATE                   NOT NULL</div><div class="line">  COMMENT &apos;death&apos;</div><div class="line">);</div><div class="line"></div><div class="line">//使用数据库  USE 使用 menagerie数据库名  </div><div class="line">USE menagerie;</div><div class="line"></div><div class="line"></div><div class="line">// 显示数据表</div><div class="line">SHOW TABLES;</div><div class="line"></div><div class="line">//  查看表</div><div class="line">DESCRIBE pet;</div></pre></td></tr></table></figure>
+<h3 id="通过文件导入数据"><a href="#通过文件导入数据" class="headerlink" title="通过文件导入数据"></a>通过文件导入数据</h3><ul>
+<li>新建1.txt 文件 写入数据  中间用tab建隔开  空值用\N 标识</li>
+<li>docker容易内部的mysql 懒 不想映射文件了 略过</li>
+<li><a href="http://www.jb51.net/article/21117.htm" target="_blank" rel="external">参考资料:MySQL 文本文件的导入导出数据的方法</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LOAD DATA LOCAL INFILE &apos;/path/pet.txt&apos; INTO TABLE pet;</div></pre></td></tr></table></figure>
+<h4 id="新增一条数据"><a href="#新增一条数据" class="headerlink" title="新增一条数据"></a>新增一条数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INSERT INTO pet </div><div class="line">VALUES(&apos;数据&apos;)</div></pre></td></tr></table></figure>
+<h3 id="cat表数据"><a href="#cat表数据" class="headerlink" title="cat表数据"></a>cat表数据</h3><table border="1" style="border-collapse:collapse"><br><tr><th>item_id</th><th>item_name</th><th>owner</th><th>species</th><th>sex</th><th>birth</th><th>death</th></tr><br><tr><td>1</td><td>Fluffy</td><td>Harold</td><td>cat</td><td>f</td><td>2017-12-21</td><td>2017-12-31</td></tr><br><tr><td>2</td><td>Claws</td><td>Gwen</td><td>cat</td><td>m</td><td>2017-12-17</td><td>2017-12-30</td></tr><br><tr><td>3</td><td>Buffy</td><td>Harold</td><td>cat</td><td>f</td><td>2017-01-02</td><td>2017-12-02</td></tr></table>
+
+
+
+<h4 id="选择所有数据"><a href="#选择所有数据" class="headerlink" title="选择所有数据"></a>选择所有数据</h4><p>在MySQL中，0或 NULL意味着假而其它值意味着真。布尔运算的默认真值是1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line">//  查看pet表所有数据</div><div class="line">SELECT * FROM pet;</div><div class="line"></div><div class="line">// 更新数据</div><div class="line">UPDATE pet SET birth = &apos;1989-08-31&apos; WHERE name = &apos;Bowser&apos;;</div><div class="line"></div><div class="line">// 查找条件</div><div class="line">SELECT * FROM pet WHERE birth &gt; &apos;2017-12-20&apos;;</div><div class="line"></div><div class="line">// AND操作符 多条件查询  AND优先级大于OR</div><div class="line">SELECT * FROM pet WHERE species = &apos;cat&apos; AND sex = &apos;f&apos;;</div><div class="line"></div><div class="line">// OR操作符</div><div class="line">SELECT * FROM pet WHERE owner = &apos;Harold&apos; or sex = &apos;f&apos;;</div><div class="line"></div><div class="line">//使用多个操作符 使用圆括号指明如何对条件进行分组</div><div class="line">SELECT * FROM pet WHERE (species = &apos;cat&apos; AND sex = &apos;m&apos;) OR (owner = &apos;Harold&apos; AND birth = &apos;2017-12-21&apos;);</div><div class="line"></div><div class="line">//选择特殊列 </div><div class="line">SELECT name, birth FROM pet;</div><div class="line"></div><div class="line">//关键字DISTINCT  重复的不展示</div><div class="line">SELECT DISTINCT owner FROM pet;</div><div class="line"></div><div class="line">//分类行 排序</div><div class="line">SELECT item_name, birth FROM pet ORDER BY birth;</div><div class="line"></div><div class="line">//分类行 排序 DESC（降序）</div><div class="line">SELECT item_name, birth FROM pet ORDER BY birth DESC;</div><div class="line"></div><div class="line">//查询 计算</div><div class="line">SELECT item_name, birth, death,(YEAR(death)-YEAR(birth)) - (RIGHT(death,5)&lt;RIGHT(birth,5))</div><div class="line">AS age</div><div class="line">FROM pet WHERE death IS NOT NULL ORDER BY age;</div><div class="line"></div><div class="line">//模式匹配  找出以“b”开头的名字</div><div class="line">SELECT * FROM pet WHERE item_name LIKE &apos;b%&apos;;</div><div class="line"></div><div class="line">//模式匹配  找出以“fy”开头的名字</div><div class="line">SELECT * FROM pet WHERE  item_name LIKE &apos;%fy&apos;;</div><div class="line"></div><div class="line">//模式匹配  找出“ff”中间的名字</div><div class="line">SELECT * FROM pet WHERE  item_name LIKE &apos;%ff%&apos;;</div><div class="line"></div><div class="line">//正则匹配  找出以B开头的名字</div><div class="line">SELECT * FROM pet WHERE item_name REGEXP &apos;^B&apos;;</div><div class="line"></div><div class="line">//强制使REGEXP比较区分大小写 使用BINARY关键字使其中一个字符串变为二进制字符串</div><div class="line">SELECT * FROM pet WHERE species REGEXP BINARY &apos;^c&apos;;</div><div class="line"></div><div class="line">//正则匹配  使用“$”匹配名字的结尾</div><div class="line">SELECT * FROM pet WHERE owner REGEXP &apos;ld$&apos;;</div><div class="line"></div><div class="line">//正则匹配  找出包含一个“a”的名字</div><div class="line">SELECT * FROM pet WHERE item_name REGEXP &apos;a&apos;;</div><div class="line"></div><div class="line">//正则匹配 为了找出包含正好5个字符的名字</div><div class="line">SELECT * FROM pet WHERE item_name REGEXP &apos;^.....$&apos;;</div><div class="line"></div><div class="line">//为了使输出减到最少，关键字DISTINCT检索出每个唯一的输出记录</div><div class="line">SELECT DISTINCT owner FROM pet;</div><div class="line"></div><div class="line">// 联合查询</div><div class="line">SELECT item_name, species, birth FROM pet WHERE species = &apos;dog&apos; OR species = &apos;cat&apos;;</div><div class="line"></div><div class="line">// 分类行</div><div class="line">SELECT item_name, birth FROM pet ORDER BY birth;</div><div class="line"></div><div class="line">// 默认排序是升序，最小的值在第一。要想以降序排序，在你正在排序的列名上增加DESC（降序 ）关键字</div><div class="line">SELECT item_name, birth FROM pet ORDER BY birth DESC;</div><div class="line"></div><div class="line">// 多个列进行排序</div><div class="line">SELECT item_name, species, birth FROM pet  ORDER BY species, birth DESC;</div><div class="line"></div><div class="line"></div><div class="line">// mysql 日期函数</div><div class="line"></div><div class="line"># 日期函数 获取生日</div><div class="line">SELECT item_name, birth, MONTH(birth) FROM pet;</div><div class="line"></div><div class="line"># 一月生日的用户 查不到不返回结果 判断结果 empty</div><div class="line">SELECT item_name, birth FROM pet WHERE MONTH(birth) = 10;</div><div class="line"></div><div class="line">//NULL值操作</div><div class="line">SELECT 1 = NULL, 1 &lt;&gt; NULL, 1 &lt; NULL, 1 &gt; NULL;</div><div class="line"></div><div class="line">// 计数行</div><div class="line">SELECT COUNT(*) FROM pet;</div><div class="line"></div><div class="line"> //列的最大值</div><div class="line">SELECT MAX(article) AS article FROM shop;</div></pre></td></tr></table></figure>
+<p><a href="http://img.jb51.net/shouce/mysql/MySQL/regexp.html" target="_blank" rel="external">附录G：MySQL正则表达式 提供了关于正则表达式的句法的详细信息。</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/mysql/" rel="tag"># mysql</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/14/phpstorm设置babel，使用ES6编译ES5/" rel="next" title="phpstorm设置babel，使用ES6编译ES5">
+                <i class="fa fa-chevron-left"></i> phpstorm设置babel，使用ES6编译ES5
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/02/01/asciinema  docker container/" rel="prev" title="asciinema bash 录制工具">
+                asciinema bash 录制工具 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="CGerAJ" />
+          <p class="site-author-name" itemprop="name">CGerAJ</p>
+           
+              <p class="site-description motion-element" itemprop="description">学而不思则罔 思而不学则殆</p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              
+                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-name">标签</span>
+              
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#mysql-学习"><span class="nav-number">1.</span> <span class="nav-text">mysql 学习</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#创建并使用数据库"><span class="nav-number">1.0.1.</span> <span class="nav-text">创建并使用数据库</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#通过文件导入数据"><span class="nav-number">1.1.</span> <span class="nav-text">通过文件导入数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#新增一条数据"><span class="nav-number">1.1.1.</span> <span class="nav-text">新增一条数据</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cat表数据"><span class="nav-number">1.2.</span> <span class="nav-text">cat表数据</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#选择所有数据"><span class="nav-number">1.2.1.</span> <span class="nav-text">选择所有数据</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">CGerAJ</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.2"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

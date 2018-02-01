@@ -313,6 +313,309 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="cgeraj.github.io/2018/02/01/asciinema  docker container/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CGerAJ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/02/01/asciinema  docker container/" itemprop="url">asciinema bash 录制工具</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-02-01T10:13:19+08:00">
+                2018-02-01
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>##[工具推荐]使用docker安装asciinema 实现录制 bash 可复制视频内代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull asciinema/asciinema</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --rm -ti -v &quot;$HOME/.config/asciinema&quot;:/root/.config/asciinema asciinema/asciinema</div></pre></td></tr></table></figure>
+<p>//执行以上命令 进入到docker容器了 开始了录制<br>//可选择是否安装 播放工具foobar</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install foobar</div></pre></td></tr></table></figure>
+<p>//如果需要传到asciinema 你需要在bash 执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">asciinema auth</div></pre></td></tr></table></figure>
+<p>// 出来一个网站  登录进去可以</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">//演示路径 以本机产生的路径为准</div><div class="line">https//:www.*****.com/345667543245676432454</div></pre></td></tr></table></figure>
+<p>//结束录制 会让你选择上传还是不上传 上传的是一个JSON文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">exit</div></pre></td></tr></table></figure>
+<h3 id="如果你需要在你的网站内展示"><a href="#如果你需要在你的网站内展示" class="headerlink" title="如果你需要在你的网站内展示"></a>如果你需要在你的网站内展示</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">https://github.com/asciinema/asciinema-player</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">Download this recording</div><div class="line">You can download this recording in asciicast v1 format, as a .json file.</div><div class="line"></div><div class="line">Download</div><div class="line">Replay in terminal</div><div class="line">You can replay this recording in your terminal with asciinema play command:</div><div class="line"></div><div class="line">asciinema play 160407.json</div><div class="line">If you don&apos;t have asciinema cli installed then see installation instructions.</div><div class="line"></div><div class="line">Use with stand-alone player on your website</div><div class="line">Download asciinema player from player&apos;s releases page (you only need .js and .css file), then use it like this:</div><div class="line"></div><div class="line">&lt;html&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;/asciinema-player.css&quot; /&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">  &lt;asciinema-player src=&quot;/160407.json&quot; cols=&quot;130&quot; rows=&quot;34&quot;&gt;&lt;/asciinema-player&gt;</div><div class="line">  ...</div><div class="line">  &lt;script src=&quot;/asciinema-player.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;/html&gt;</div><div class="line"></div><div class="line">See asciinema player README for full usage instructions.</div></pre></td></tr></table></figure>
+<p><img src="http://mwebblog-1252916789.coscd.myqcloud.com/1111111111.png?sign=FSDCx5MZwSbStr6E0nW9E68mEzlhPTEyNTI5MTY3ODkmaz1BS0lESWR0eHdzUk51SVVUS082N0M1bGtjSW04SUxHTUo1dWYmZT0xNTIwMDQ0NDY2JnQ9MTUxNzQ1MjQ2NiZyPTExNTQzNzM2OTQmZj0vMTExMTExMTExMS5wbmcmYj1td2ViYmxvZw==" alt=""></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="cgeraj.github.io/2017/12/04/mysql学习/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="CGerAJ">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/12/04/mysql学习/" itemprop="url">mysql 基础学习</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-12-04T10:21:14+08:00">
+                2017-12-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="mysql-学习"><a href="#mysql-学习" class="headerlink" title="mysql 学习"></a>mysql 学习</h2><p>-参考资料 <a href="http://img.jb51.net/shouce/mysql/index.html" target="_blank" rel="external">mysql在线参考手册</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 管理员登录mysql</div><div class="line">mysql -u root -p</div><div class="line"></div><div class="line">// 查看mysql版本号和当前日期</div><div class="line"></div><div class="line">SELECT VERSION(), CURRENT_DATE;</div></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>提示符</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>mysql&gt;</td>
+<td>准备好接受新命令。</td>
+</tr>
+<tr>
+<td>-&gt;</td>
+<td>等待多行命令的下一行。</td>
+</tr>
+<tr>
+<td>‘&gt;</td>
+<td>等待下一行，等待以单引号(“’”)开始的字符串的结束。</td>
+</tr>
+<tr>
+<td>“&gt;</td>
+<td>等待下一行，等待以双引号(“””)开始的字符串的结束。</td>
+</tr>
+<tr>
+<td>`&gt;</td>
+<td>等待下一行，等待以反斜点(” ”)开始的识别符的结束。</td>
+</tr>
+<tr>
+<td>/*&gt;</td>
+<td>等待下一行，等待以 开始的注释的结束。</td>
+</tr>
+</tbody>
+</table>
+<h4 id="创建并使用数据库"><a href="#创建并使用数据库" class="headerlink" title="创建并使用数据库"></a>创建并使用数据库</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line">// 显示数据库</div><div class="line">SHOW DATABASES;</div><div class="line"></div><div class="line">// 创建数据库  严格区分大小写</div><div class="line">CREATE DATABASE menagerie;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">//创建pet数据表  在DataGrip内编辑</div><div class="line"></div><div class="line">CREATE TABLE pet</div><div class="line">(</div><div class="line">  item_id   INT AUTO_INCREMENT</div><div class="line">  COMMENT &apos;item id&apos;</div><div class="line">    PRIMARY KEY,</div><div class="line">  item_name VARCHAR(20)            NOT NULL</div><div class="line">  COMMENT &apos;命名空间格式&apos;,</div><div class="line">  owner     VARCHAR(20)            NOT NULL</div><div class="line">  COMMENT &apos;owner&apos;,</div><div class="line">  species   VARCHAR(20) DEFAULT &apos;&apos; NOT NULL</div><div class="line">  COMMENT &apos;species&apos;,</div><div class="line">  sex       CHAR                   NOT NULL</div><div class="line">  COMMENT &apos;sex&apos;,</div><div class="line">  birth     DATE                   NOT NULL</div><div class="line">  COMMENT &apos;birth&apos;,</div><div class="line">  death     DATE                   NOT NULL</div><div class="line">  COMMENT &apos;death&apos;</div><div class="line">);</div><div class="line"></div><div class="line">//使用数据库  USE 使用 menagerie数据库名  </div><div class="line">USE menagerie;</div><div class="line"></div><div class="line"></div><div class="line">// 显示数据表</div><div class="line">SHOW TABLES;</div><div class="line"></div><div class="line">//  查看表</div><div class="line">DESCRIBE pet;</div></pre></td></tr></table></figure>
+<h3 id="通过文件导入数据"><a href="#通过文件导入数据" class="headerlink" title="通过文件导入数据"></a>通过文件导入数据</h3><ul>
+<li>新建1.txt 文件 写入数据  中间用tab建隔开  空值用\N 标识</li>
+<li>docker容易内部的mysql 懒 不想映射文件了 略过</li>
+<li><a href="http://www.jb51.net/article/21117.htm" target="_blank" rel="external">参考资料:MySQL 文本文件的导入导出数据的方法</a></li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">LOAD DATA LOCAL INFILE &apos;/path/pet.txt&apos; INTO TABLE pet;</div></pre></td></tr></table></figure>
+<h4 id="新增一条数据"><a href="#新增一条数据" class="headerlink" title="新增一条数据"></a>新增一条数据</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">INSERT INTO pet </div><div class="line">VALUES(&apos;数据&apos;)</div></pre></td></tr></table></figure>
+<h3 id="cat表数据"><a href="#cat表数据" class="headerlink" title="cat表数据"></a>cat表数据</h3><table border="1" style="border-collapse:collapse"><br><tr><th>item_id</th><th>item_name</th><th>owner</th><th>species</th><th>sex</th><th>birth</th><th>death</th></tr><br><tr><td>1</td><td>Fluffy</td><td>Harold</td><td>cat</td><td>f</td><td>2017-12-21</td><td>2017-12-31</td></tr><br><tr><td>2</td><td>Claws</td><td>Gwen</td><td>cat</td><td>m</td><td>2017-12-17</td><td>2017-12-30</td></tr><br><tr><td>3</td><td>Buffy</td><td>Harold</td><td>cat</td><td>f</td><td>2017-01-02</td><td>2017-12-02</td></tr></table>
+
+
+
+<h4 id="选择所有数据"><a href="#选择所有数据" class="headerlink" title="选择所有数据"></a>选择所有数据</h4><p>在MySQL中，0或 NULL意味着假而其它值意味着真。布尔运算的默认真值是1</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div><div class="line">84</div><div class="line">85</div><div class="line">86</div><div class="line">87</div><div class="line">88</div><div class="line">89</div><div class="line">90</div><div class="line">91</div></pre></td><td class="code"><pre><div class="line">//  查看pet表所有数据</div><div class="line">SELECT * FROM pet;</div><div class="line"></div><div class="line">// 更新数据</div><div class="line">UPDATE pet SET birth = &apos;1989-08-31&apos; WHERE name = &apos;Bowser&apos;;</div><div class="line"></div><div class="line">// 查找条件</div><div class="line">SELECT * FROM pet WHERE birth &gt; &apos;2017-12-20&apos;;</div><div class="line"></div><div class="line">// AND操作符 多条件查询  AND优先级大于OR</div><div class="line">SELECT * FROM pet WHERE species = &apos;cat&apos; AND sex = &apos;f&apos;;</div><div class="line"></div><div class="line">// OR操作符</div><div class="line">SELECT * FROM pet WHERE owner = &apos;Harold&apos; or sex = &apos;f&apos;;</div><div class="line"></div><div class="line">//使用多个操作符 使用圆括号指明如何对条件进行分组</div><div class="line">SELECT * FROM pet WHERE (species = &apos;cat&apos; AND sex = &apos;m&apos;) OR (owner = &apos;Harold&apos; AND birth = &apos;2017-12-21&apos;);</div><div class="line"></div><div class="line">//选择特殊列 </div><div class="line">SELECT name, birth FROM pet;</div><div class="line"></div><div class="line">//关键字DISTINCT  重复的不展示</div><div class="line">SELECT DISTINCT owner FROM pet;</div><div class="line"></div><div class="line">//分类行 排序</div><div class="line">SELECT item_name, birth FROM pet ORDER BY birth;</div><div class="line"></div><div class="line">//分类行 排序 DESC（降序）</div><div class="line">SELECT item_name, birth FROM pet ORDER BY birth DESC;</div><div class="line"></div><div class="line">//查询 计算</div><div class="line">SELECT item_name, birth, death,(YEAR(death)-YEAR(birth)) - (RIGHT(death,5)&lt;RIGHT(birth,5))</div><div class="line">AS age</div><div class="line">FROM pet WHERE death IS NOT NULL ORDER BY age;</div><div class="line"></div><div class="line">//模式匹配  找出以“b”开头的名字</div><div class="line">SELECT * FROM pet WHERE item_name LIKE &apos;b%&apos;;</div><div class="line"></div><div class="line">//模式匹配  找出以“fy”开头的名字</div><div class="line">SELECT * FROM pet WHERE  item_name LIKE &apos;%fy&apos;;</div><div class="line"></div><div class="line">//模式匹配  找出“ff”中间的名字</div><div class="line">SELECT * FROM pet WHERE  item_name LIKE &apos;%ff%&apos;;</div><div class="line"></div><div class="line">//正则匹配  找出以B开头的名字</div><div class="line">SELECT * FROM pet WHERE item_name REGEXP &apos;^B&apos;;</div><div class="line"></div><div class="line">//强制使REGEXP比较区分大小写 使用BINARY关键字使其中一个字符串变为二进制字符串</div><div class="line">SELECT * FROM pet WHERE species REGEXP BINARY &apos;^c&apos;;</div><div class="line"></div><div class="line">//正则匹配  使用“$”匹配名字的结尾</div><div class="line">SELECT * FROM pet WHERE owner REGEXP &apos;ld$&apos;;</div><div class="line"></div><div class="line">//正则匹配  找出包含一个“a”的名字</div><div class="line">SELECT * FROM pet WHERE item_name REGEXP &apos;a&apos;;</div><div class="line"></div><div class="line">//正则匹配 为了找出包含正好5个字符的名字</div><div class="line">SELECT * FROM pet WHERE item_name REGEXP &apos;^.....$&apos;;</div><div class="line"></div><div class="line">//为了使输出减到最少，关键字DISTINCT检索出每个唯一的输出记录</div><div class="line">SELECT DISTINCT owner FROM pet;</div><div class="line"></div><div class="line">// 联合查询</div><div class="line">SELECT item_name, species, birth FROM pet WHERE species = &apos;dog&apos; OR species = &apos;cat&apos;;</div><div class="line"></div><div class="line">// 分类行</div><div class="line">SELECT item_name, birth FROM pet ORDER BY birth;</div><div class="line"></div><div class="line">// 默认排序是升序，最小的值在第一。要想以降序排序，在你正在排序的列名上增加DESC（降序 ）关键字</div><div class="line">SELECT item_name, birth FROM pet ORDER BY birth DESC;</div><div class="line"></div><div class="line">// 多个列进行排序</div><div class="line">SELECT item_name, species, birth FROM pet  ORDER BY species, birth DESC;</div><div class="line"></div><div class="line"></div><div class="line">// mysql 日期函数</div><div class="line"></div><div class="line"># 日期函数 获取生日</div><div class="line">SELECT item_name, birth, MONTH(birth) FROM pet;</div><div class="line"></div><div class="line"># 一月生日的用户 查不到不返回结果 判断结果 empty</div><div class="line">SELECT item_name, birth FROM pet WHERE MONTH(birth) = 10;</div><div class="line"></div><div class="line">//NULL值操作</div><div class="line">SELECT 1 = NULL, 1 &lt;&gt; NULL, 1 &lt; NULL, 1 &gt; NULL;</div><div class="line"></div><div class="line">// 计数行</div><div class="line">SELECT COUNT(*) FROM pet;</div><div class="line"></div><div class="line"> //列的最大值</div><div class="line">SELECT MAX(article) AS article FROM shop;</div></pre></td></tr></table></figure>
+<p><a href="http://img.jb51.net/shouce/mysql/MySQL/regexp.html" target="_blank" rel="external">附录G：MySQL正则表达式 提供了关于正则表达式的句法的详细信息。</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="cgeraj.github.io/2017/11/14/phpstorm设置babel，使用ES6编译ES5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -332,7 +635,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/11/14/phpstorm设置babel，使用ES6编译ES5/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2017/11/14/phpstorm设置babel，使用ES6编译ES5/" itemprop="url">phpstorm设置babel，使用ES6编译ES5</a></h1>
         
 
         <div class="post-meta">
@@ -384,7 +687,8 @@
       
         
           
-            <h2 id="phpstorm设置babel，使用ES6编译ES5"><a href="#phpstorm设置babel，使用ES6编译ES5" class="headerlink" title="phpstorm设置babel，使用ES6编译ES5"></a>phpstorm设置babel，使用ES6编译ES5</h2><ul>
+            <p>## </p>
+<ul>
 <li>图片都在google图床 请自行科学上网</li>
 <li>PhpStorm 2017.2.4 / webStorm 2017.2</li>
 <li>Mac OS X 10.12.6</li>
@@ -478,7 +782,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/10/16/macOs 调试安卓设备 adb 调试工具步骤/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2017/10/16/macOs 调试安卓设备 adb 调试工具步骤/" itemprop="url">macOs 调试安卓设备 adb 调试工具步骤</a></h1>
         
 
         <div class="post-meta">
@@ -530,7 +834,7 @@
       
         
           
-            <h2 id="macOs-调试安卓设备-adb-调试工具步骤"><a href="#macOs-调试安卓设备-adb-调试工具步骤" class="headerlink" title="macOs 调试安卓设备 adb 调试工具步骤"></a>macOs 调试安卓设备 adb 调试工具步骤</h2><h4 id="获取厂商ID地址"><a href="#获取厂商ID地址" class="headerlink" title="获取厂商ID地址"></a>获取厂商ID地址</h4><p>Vendor ID</p>
+            <h4 id="获取厂商ID地址"><a href="#获取厂商ID地址" class="headerlink" title="获取厂商ID地址"></a>获取厂商ID地址</h4><p>Vendor ID</p>
 <h4 id="配置配置文件"><a href="#配置配置文件" class="headerlink" title="配置配置文件"></a>配置配置文件</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">vi  ~/.android/adb_usb.ini</div><div class="line">//添加厂商ID</div></pre></td></tr></table></figure>
 <h4 id="重启服务"><a href="#重启服务" class="headerlink" title="重启服务"></a>重启服务</h4> <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">./adb kill-server</div><div class="line">./adb start-server</div><div class="line">//查看是否获取设备</div><div class="line">./adb devices</div></pre></td></tr></table></figure>
 
@@ -1096,7 +1400,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">5</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -1109,7 +1413,7 @@
             
             <div class="site-state-item site-state-tags">
               
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">7</span>
                 <span class="site-state-item-name">标签</span>
               
             </div>
@@ -1151,7 +1455,7 @@
         <div class="copyright" >
   
   &copy; 
-  <span itemprop="copyrightYear">2017</span>
+  <span itemprop="copyrightYear">2018</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
