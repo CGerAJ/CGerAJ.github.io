@@ -50,9 +50,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -83,11 +83,11 @@
   <div class="article-content">
     <div class="entry">
       
-        <a id="more"></a>
-<p>##[工具推荐]使用docker安装asciinema 实现录制 bash 可复制视频内代码</p>
+        <p>##[工具推荐]使用docker安装asciinema 实现录制 bash 可复制视频内代码</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull asciinema/asciinema</div></pre></td></tr></table></figure>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --rm -ti -v &quot;$HOME/.config/asciinema&quot;:/root/.config/asciinema asciinema/asciinema</div></pre></td></tr></table></figure>
 <p>//执行以上命令 进入到docker容器了 开始了录制<br>//可选择是否安装 播放工具foobar</p>
+<a id="more"></a>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get install foobar</div></pre></td></tr></table></figure>
 <p>//如果需要传到asciinema 你需要在bash 执行</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">asciinema auth</div></pre></td></tr></table></figure>

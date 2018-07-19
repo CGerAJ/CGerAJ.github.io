@@ -50,9 +50,9 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">主页</a></li>
+        <li><a href="/">Home</a></li>
       
-        <li><a href="/archives">归档</a></li>
+        <li><a href="/archives">Archives</a></li>
       
     </ul>
   </nav>
@@ -83,8 +83,7 @@
   <div class="article-content">
     <div class="entry">
       
-        <a id="more"></a> 
-<ul>
+        <ul>
 <li>图片都在google图床 请自行科学上网</li>
 <li>PhpStorm 2017.2.4 / webStorm 2017.2</li>
 <li>Mac OS X 10.12.6</li>
@@ -93,6 +92,7 @@
 </ul>
 <p>使用PhpStorm/webStorm自带的filewatcher中的babel自动编译前，需要安装一些babel库</p>
 <h6 id="全局安装（webstorm自动识别路径）"><a href="#全局安装（webstorm自动识别路径）" class="headerlink" title="全局安装（webstorm自动识别路径）"></a>全局安装（webstorm自动识别路径）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g babel-cli</div></pre></td></tr></table></figure>
+<a id="more"></a> 
 <h6 id="项目内安装（需要指定目录至项目内的babel文件）"><a href="#项目内安装（需要指定目录至项目内的babel文件）" class="headerlink" title="项目内安装（需要指定目录至项目内的babel文件）"></a>项目内安装（需要指定目录至项目内的babel文件）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install babel-cli --save-dev</div></pre></td></tr></table></figure>
 <h6 id="安装其他babel库"><a href="#安装其他babel库" class="headerlink" title="安装其他babel库"></a>安装其他babel库</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev  babel-preset-env</div></pre></td></tr></table></figure>
 <h6 id="项目目录新建-babelrc-文件-参考配置"><a href="#项目目录新建-babelrc-文件-参考配置" class="headerlink" title="项目目录新建 .babelrc 文件(参考配置)"></a>项目目录新建 .babelrc 文件(参考配置)</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  &quot;presets&quot;: [</div><div class="line">    [&quot;env&quot;, &#123;</div><div class="line">      &quot;modules&quot;: false,</div><div class="line">      &quot;targets&quot;: &#123;</div><div class="line">        &quot;browsers&quot;: [&quot;&gt; 1%&quot;, &quot;last 2 versions&quot;, &quot;not ie &lt;= 8&quot;]</div><div class="line">      &#125;</div><div class="line">    &#125;]</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
