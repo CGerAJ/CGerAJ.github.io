@@ -1,0 +1,286 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 2 | Hexo | CGerAJ Blog</title>
+
+  
+  <meta name="author" content="CGerAJ">
+  
+
+  
+  <meta name="description" content="学而不思则罔 思而不学则殆">
+  
+
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  
+
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Hexo</a>
+    </h1>
+    <p class="site-description">CGerAJ Blog</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/categories">Categories</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/08/20/网络安全/"><span>网络安全入门（信息收集）</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/08/20/网络安全/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-08-20T14:02:28.000Z">
+          2017-08-20
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>###google浏览器搜索技巧</p>
+<p>####常用的googlehacking语法：</p>
+<ul>
+<li>intext:要搜索的内容  把网页中的正文内容中的某个字符作为搜索条件</li>
+<li>intitle:要搜索的内容  把标题中的某个字符作为搜索条件</li>
+<li>cache:要搜索的内容 搜索引擎关于某些内容的缓存 可能发现有价值的信息</li>
+<li>filetype:要搜索的内容 指定一个格式类型的文件作为搜索条件</li>
+<li>inurl:要搜索的内容 inurl:php?id=  inurl:jsp?id= 搜索包含指定字符的URL</li>
+<li>site:要搜索的内容 在指定的站点搜索相关内容</li>
+<li>引号” “ 吧关键字打上引号后把引号部分作为整体来搜索</li>
+<li>or  同事搜索两个或者更多的关键词</li>
+<li><p>link 搜索某个网站的链接</p>
+</li>
+<li><p>组合使用 intitle:admin  inurl:admin</p>
+</li>
+<li>组合 intitle:海尔 inurl:php?id=</li>
+</ul>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/拓展知识/">拓展知识</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/网络安全/">网络安全</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/08/14/JSON WEB TOKEN /"><span>NODE.JS EXPRESS JWT Token</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/08/14/JSON WEB TOKEN /" rel="bookmark">
+        <time class="entry-date published" datetime="2017-08-14T02:07:21.000Z">
+          2017-08-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p><img src="./token.png" alt=""></p>
+<h3 id="已安装好node-express-以下为普通登录返回token的操作"><a href="#已安装好node-express-以下为普通登录返回token的操作" class="headerlink" title="已安装好node express 以下为普通登录返回token的操作"></a>已安装好node express 以下为普通登录返回token的操作</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">//安装模块</div><div class="line">npm i jwt-simple --save</div><div class="line">//使用模块</div><div class="line">const jwt = require(&apos;jwt-simple&apos;);</div><div class="line">//需要使用express</div><div class="line">var app = express();</div><div class="line">//设置秘钥</div><div class="line">app.set(&apos;jwtTokenSecret&apos;, &apos;CGerAJ&apos;);</div><div class="line"></div><div class="line">// @file login.js  ajax请求login地址获取token 此处/指向的是login接口</div><div class="line">router.post(&apos;/&apos;, function(req, res, next) &#123;</div><div class="line"></div><div class="line">// 开发环境设置跨域访问</div><div class="line">res.header(&quot;Access-Control-Allow-Origin&quot;, &quot;*&quot;);</div><div class="line">res.header(&apos;Access-Control-Allow-Methods&apos;, &apos;PUT, GET, POST, DELETE, OPTIONS&apos;);</div><div class="line">res.header(&quot;Access-Control-Allow-Headers&quot;, &quot;X-Requested-With&quot;);</div><div class="line">res.header(&apos;Access-Control-Allow-Headers&apos;, &apos;Content-Type&apos;);</div><div class="line"></div><div class="line">  // 后端验证判断名字或者密码是否为空 这里使用的是明文 部署环境需要使用加密算法传输</div><div class="line">  if (!req.body.names || !req.body.password ) &#123;</div><div class="line">    return res.status(400).send(&quot;用户名或者密码不能为空！&quot;);</div><div class="line">  &#125;</div><div class="line"> </div><div class="line"></div><div class="line"></div><div class="line">  // 查数据库</div><div class="line">  User.findOne(&#123; username: req.body.names &#125;, function(err, user) &#123;</div><div class="line">  </div><div class="line">	    if (err) &#123;</div><div class="line">	      // 如果报错</div><div class="line">	      return res.sendStatus(401).json(&#123; success: false&#125;);</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">	    if (!user) &#123;</div><div class="line">	      // 用户没找到的情况</div><div class="line">	      return res.sendStatus(401).json(&#123; success: false&#125;);</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">	    if ( req.body.password !== user.userpwd) &#123;</div><div class="line">	      // 密码不对的情况</div><div class="line">	      return res.sendStatus(401).json(&#123; success: false&#125;);</div><div class="line">	    &#125;</div><div class="line">	    </div><div class="line">	    // 过期时间 一般设置为小时 此处为天</div><div class="line">	    var expires = moment().add(&apos;days&apos;, 1).valueOf();</div><div class="line">	    </div><div class="line">	    // 验证通过 执行token生成</div><div class="line">	    var token = jwt.encode(&#123;</div><div class="line">	        iss: user.username,</div><div class="line">	        exp: expires</div><div class="line">      &#125;,</div><div class="line">      app.get(&apos;jwtTokenSecret&apos;));</div><div class="line">     res.status(200).json(&#123; </div><div class="line">	     success: true,</div><div class="line">	     token : token,</div><div class="line">	     expires: expires,</div><div class="line">	     user: user.toJSON()</div><div class="line">     &#125;);</div><div class="line">  &#125;);</div><div class="line">&#125;);</div><div class="line"></div><div class="line">前端根据返回的token 存到本地 跳转页面  单页面路由跳转前端验证token是否存在 不存在返回登录页</div><div class="line">localStorage.token=data.token;</div><div class="line">window.location.href = &quot;http://localhost:8080/view/user&quot;;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/NodeJS/">NodeJS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/NODEJS/">NODEJS</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/07/17/docker学习笔记/"><span>docker 学习笔记</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/07/17/docker学习笔记/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-07-17T07:48:00.000Z">
+          2017-07-17
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt-数据交互-gt-容器互联"><a href="#安装Docker-gt-下载镜像-gt-使用Dockerfile定制镜像-gt-构建镜像-gt-用构建的镜像启动容器-gt-数据交互-gt-容器互联" class="headerlink" title="安装Docker -&gt; 下载镜像 -&gt; 使用Dockerfile定制镜像 -&gt; 构建镜像 -&gt; 用构建的镜像启动容器 -&gt; 数据交互 -&gt; 容器互联"></a>安装Docker -&gt; 下载镜像 -&gt; 使用Dockerfile定制镜像 -&gt; 构建镜像 -&gt; 用构建的镜像启动容器 -&gt; 数据交互 -&gt; 容器互联</h2><h2 id="下载镜像"><a href="#下载镜像" class="headerlink" title="下载镜像"></a>下载镜像</h2><p>从Docker Registry 获取镜像的命令 docker pull</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull [选项] [Docker Registry地址] &lt;仓库名&gt;:&lt;标签&gt;</div></pre></td></tr></table></figure>
+<ul>
+<li>Docker Registry地址格式 域名:端口号</li>
+<li>仓库名 用户名 软件名</li>
+</ul>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/docker/">docker</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/docker/">docker</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+
+<nav class="pagination">
+  
+  <a href="/" class="pagination-prev">Prev</a>
+  
+  
+</nav>
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 CGerAJ
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
