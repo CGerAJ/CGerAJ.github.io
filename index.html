@@ -51,12 +51,141 @@
       
         <li><a href="/archives">Archives</a></li>
       
+        <li><a href="/categories">Categories</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
     </ul>
   </nav>
 </header>
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/09/05/javascript 观察者模式/"><span>javascript观察者模式 ES5 &amp;&amp; ES6代码实现</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/09/05/javascript 观察者模式/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-09-05T01:38:52.524Z">
+          2018-09-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>javascript 观察者模式概念就不说了 仁者见仁 智者见智，以下代码</p>
+<ul>
+<li>es5版本 来源于 JavaScript设计模式-张容铭</li>
+<li>es6版本 来源于 慕课视频  JavaScript设计模式</li>
+</ul>
+<h2 id="ES5-代码实现"><a href="#ES5-代码实现" class="headerlink" title="ES5  代码实现"></a>ES5  代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">const Observer = (function()&#123;</div><div class="line">var _message = &#123;&#125;</div><div class="line">  return &#123;</div><div class="line">    // 注册信息接口</div><div class="line">    regist(type,fn)&#123;</div><div class="line">        // 如果此消息不存在则应该创建一个该消息类型</div><div class="line">        if (typeof _message[type] === &apos;undefined&apos;) &#123;</div><div class="line">          _message[type] = [fn]</div><div class="line">        &#125;else&#123;</div><div class="line">          _message[type].push(fn)</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    // 发布信息接口</div><div class="line">    fire(type,args)&#123;</div><div class="line">      // 如果该消息没有被注册 则返回</div><div class="line">      if(!_message[type]) return;</div><div class="line">      let events = &#123;</div><div class="line">        type: type, //消息类型</div><div class="line">        args: args || &#123;&#125; //消息携带数据</div><div class="line">      &#125;,</div><div class="line">      i = 0,</div><div class="line">      len = _message[type].length;</div><div class="line">      // 遍历消息动作</div><div class="line">      for (;i&lt;len;i++) &#123;</div><div class="line">        //  依次执行注册的消息对应的动作序列</div><div class="line">        _message[type][i].call(this,events);</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    //移除信息接口</div><div class="line">    remove()&#123;</div><div class="line">      // 如果消息动作队列存在</div><div class="line">      if( _message[type] instanceof Array )&#123;</div><div class="line">        //  从最后一个消息遍历</div><div class="line">        let i = _message[type].length - 1;</div><div class="line">        for (; i &gt;=0; i--) &#123;</div><div class="line">          //如果存在该动作则在消息动作序列中移除相应动作</div><div class="line">          _message[type][i] === fn &amp;&amp; _message[type].splice(i, 1);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">  &#125;)()</div><div class="line"></div><div class="line">Observer.regist(&quot;test&quot;,function(e) &#123;</div><div class="line">  console.log(e.type,e.args.msg)</div><div class="line">&#125;)</div><div class="line">Observer.regist(&quot;test&quot;,function(e) &#123;</div><div class="line">  console.log(11111)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">Observer.fire(&quot;test&quot;,&#123;msg:&quot;传递参数&quot;&#125;)</div><div class="line"></div><div class="line">Observer.fire(&quot;test&quot;,&#123;msg:&quot;传递参数&quot;&#125;)</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/javascript设计模式/">javascript设计模式</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/javascript-设计模式-es6/">javascript 设计模式 es6</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/09/04/docker 安装kali-linux-docker/"><span>docker Kali Linux</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/09/04/docker 安装kali-linux-docker/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-09-04T02:57:28.736Z">
+          2018-09-04
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Official-Kali-Linux-Docker-Images-Released"><a href="#Official-Kali-Linux-Docker-Images-Released" class="headerlink" title="Official Kali Linux Docker Images Released"></a>Official Kali Linux Docker Images Released</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull kalilinux/kali-linux-docker</div></pre></td></tr></table></figure>
+<h2 id="Setting-up-a-Kali-Linux-Docker-Image"><a href="#Setting-up-a-Kali-Linux-Docker-Image" class="headerlink" title="Setting up a Kali Linux Docker Image"></a>Setting up a Kali Linux Docker Image</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -t -i kalilinux/kali-linux-docker /bin/bash</div></pre></td></tr></table></figure>
+<h2 id="update-soft-source"><a href="#update-soft-source" class="headerlink" title="update soft source"></a>update soft source</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get update &amp;&amp; apt-get install metasploit-framework</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/docker/">docker</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/docker-安全-Linux/">docker 安全 Linux</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -91,6 +220,13 @@
   <div class="article-footer">
     <div class="article-meta pull-left">
 
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/docker/">docker</a>
+    </span>
     
 
     
@@ -147,6 +283,13 @@
     <div class="article-meta pull-left">
 
     
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工具应用/">工具应用</a>
+    </span>
+    
 
     
     
@@ -199,6 +342,13 @@
   <div class="article-footer">
     <div class="article-meta pull-left">
 
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/NodeJS/">NodeJS</a>
+    </span>
     
 
     
@@ -260,6 +410,13 @@
     <div class="article-meta pull-left">
 
     
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工具应用/">工具应用</a>
+    </span>
+    
 
     
     
@@ -314,6 +471,13 @@
   <div class="article-footer">
     <div class="article-meta pull-left">
 
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工具应用/">工具应用</a>
+    </span>
     
 
     
@@ -383,6 +547,13 @@
     <div class="article-meta pull-left">
 
     
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/拓展知识/">拓展知识</a>
+    </span>
+    
 
     
     
@@ -435,6 +606,13 @@
   <div class="article-footer">
     <div class="article-meta pull-left">
 
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/NodeJS/">NodeJS</a>
+    </span>
     
 
     
@@ -492,6 +670,13 @@
   <div class="article-footer">
     <div class="article-meta pull-left">
 
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/docker/">docker</a>
+    </span>
     
 
     

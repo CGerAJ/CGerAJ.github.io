@@ -1,0 +1,150 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript观察者模式 ES5 &amp;&amp; ES6代码实现 | Hexo | CGerAJ Blog</title>
+
+  
+  <meta name="author" content="CGerAJ">
+  
+
+  
+  <meta name="description" content="学而不思则罔 思而不学则殆">
+  
+
+  
+  
+  <meta name="keywords" content="javascript 设计模式 es6">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="javascript观察者模式 ES5 &amp;&amp; ES6代码实现"/>
+
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Hexo</a>
+    </h1>
+    <p class="site-description">CGerAJ Blog</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/categories">Categories</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>javascript观察者模式 ES5 &amp;&amp; ES6代码实现</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/09/05/javascript 观察者模式/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-09-05T01:38:52.524Z">
+          2018-09-05
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>javascript 观察者模式概念就不说了 仁者见仁 智者见智，以下代码</p>
+<ul>
+<li>es5版本 来源于 JavaScript设计模式-张容铭</li>
+<li>es6版本 来源于 慕课视频  JavaScript设计模式</li>
+</ul>
+<h2 id="ES5-代码实现"><a href="#ES5-代码实现" class="headerlink" title="ES5  代码实现"></a>ES5  代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div></pre></td><td class="code"><pre><div class="line">const Observer = (function()&#123;</div><div class="line">var _message = &#123;&#125;</div><div class="line">  return &#123;</div><div class="line">    // 注册信息接口</div><div class="line">    regist(type,fn)&#123;</div><div class="line">        // 如果此消息不存在则应该创建一个该消息类型</div><div class="line">        if (typeof _message[type] === &apos;undefined&apos;) &#123;</div><div class="line">          _message[type] = [fn]</div><div class="line">        &#125;else&#123;</div><div class="line">          _message[type].push(fn)</div><div class="line">        &#125;</div><div class="line">    &#125;,</div><div class="line">    // 发布信息接口</div><div class="line">    fire(type,args)&#123;</div><div class="line">      // 如果该消息没有被注册 则返回</div><div class="line">      if(!_message[type]) return;</div><div class="line">      let events = &#123;</div><div class="line">        type: type, //消息类型</div><div class="line">        args: args || &#123;&#125; //消息携带数据</div><div class="line">      &#125;,</div><div class="line">      i = 0,</div><div class="line">      len = _message[type].length;</div><div class="line">      // 遍历消息动作</div><div class="line">      for (;i&lt;len;i++) &#123;</div><div class="line">        //  依次执行注册的消息对应的动作序列</div><div class="line">        _message[type][i].call(this,events);</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    //移除信息接口</div><div class="line">    remove()&#123;</div><div class="line">      // 如果消息动作队列存在</div><div class="line">      if( _message[type] instanceof Array )&#123;</div><div class="line">        //  从最后一个消息遍历</div><div class="line">        let i = _message[type].length - 1;</div><div class="line">        for (; i &gt;=0; i--) &#123;</div><div class="line">          //如果存在该动作则在消息动作序列中移除相应动作</div><div class="line">          _message[type][i] === fn &amp;&amp; _message[type].splice(i, 1);</div><div class="line"></div><div class="line">        &#125;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">  &#125;</div><div class="line">  &#125;)()</div><div class="line"></div><div class="line">Observer.regist(&quot;test&quot;,function(e) &#123;</div><div class="line">  console.log(e.type,e.args.msg)</div><div class="line">&#125;)</div><div class="line">Observer.regist(&quot;test&quot;,function(e) &#123;</div><div class="line">  console.log(11111)</div><div class="line">&#125;)</div><div class="line"></div><div class="line">Observer.fire(&quot;test&quot;,&#123;msg:&quot;传递参数&quot;&#125;)</div><div class="line"></div><div class="line">Observer.fire(&quot;test&quot;,&#123;msg:&quot;传递参数&quot;&#125;)</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="ES6-代码实现"><a href="#ES6-代码实现" class="headerlink" title="ES6 代码实现"></a>ES6 代码实现</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div></pre></td><td class="code"><pre><div class="line">// 主题，接收状态变化，触发每个观察者</div><div class="line">class Subject &#123;</div><div class="line">    constructor() &#123;</div><div class="line">        this.state = 0</div><div class="line">        this.observers = []</div><div class="line">    &#125;</div><div class="line">    getState() &#123;</div><div class="line">        return this.state</div><div class="line">    &#125;</div><div class="line">    setState(state) &#123;</div><div class="line">        this.state = state</div><div class="line">        this.notifyAllObservers()</div><div class="line">    &#125;</div><div class="line">    attach(observer) &#123;</div><div class="line">        this.observers.push(observer)</div><div class="line">    &#125;</div><div class="line">    notifyAllObservers() &#123;</div><div class="line">        this.observers.forEach(observer =&gt; &#123;</div><div class="line">            observer.update()</div><div class="line">        &#125;)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 观察者，等待被触发</div><div class="line">class Observer &#123;</div><div class="line">    constructor(name, subject) &#123;</div><div class="line">        this.name = name</div><div class="line">        this.subject = subject</div><div class="line">        this.subject.attach(this)</div><div class="line">    &#125;</div><div class="line">    update() &#123;</div><div class="line">        console.log(`$&#123;this.name&#125; update, state: $&#123;this.subject.getState()&#125;`)</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">// 测试代码</div><div class="line">let s = new Subject()</div><div class="line">let o1 = new Observer(&apos;o1&apos;, s)</div><div class="line">let o2 = new Observer(&apos;o2&apos;, s)</div><div class="line">let o3 = new Observer(&apos;o3&apos;, s)</div><div class="line"></div><div class="line">s.setState(1)</div><div class="line">s.setState(2)</div><div class="line">s.setState(3)</div></pre></td></tr></table></figure>
+<h2 id="自我见解"><a href="#自我见解" class="headerlink" title="自我见解"></a>自我见解</h2><p>没用过这个写插件 所以还停留在学习阶段，没有依赖注入理解深刻，因为依赖注入在写插件的时候有用到，设计和模式是两个概念 设计是可迭代的，模式是固定的。最关键的是用。举一反三～</p>
+<p>设计模式不看就忘 留存备看～ cry ～</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/javascript设计模式/">javascript设计模式</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/javascript-设计模式-es6/">javascript 设计模式 es6</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 CGerAJ
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

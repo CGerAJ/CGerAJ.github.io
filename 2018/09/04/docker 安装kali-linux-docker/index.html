@@ -1,0 +1,145 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>docker Kali Linux | Hexo | CGerAJ Blog</title>
+
+  
+  <meta name="author" content="CGerAJ">
+  
+
+  
+  <meta name="description" content="学而不思则罔 思而不学则殆">
+  
+
+  
+  
+  <meta name="keywords" content="docker 安全 Linux">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="docker Kali Linux"/>
+
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Hexo</a>
+    </h1>
+    <p class="site-description">CGerAJ Blog</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/categories">Categories</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>docker Kali Linux</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/09/04/docker 安装kali-linux-docker/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-09-04T02:57:28.736Z">
+          2018-09-04
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="Official-Kali-Linux-Docker-Images-Released"><a href="#Official-Kali-Linux-Docker-Images-Released" class="headerlink" title="Official Kali Linux Docker Images Released"></a>Official Kali Linux Docker Images Released</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull kalilinux/kali-linux-docker</div></pre></td></tr></table></figure>
+<h2 id="Setting-up-a-Kali-Linux-Docker-Image"><a href="#Setting-up-a-Kali-Linux-Docker-Image" class="headerlink" title="Setting up a Kali Linux Docker Image"></a>Setting up a Kali Linux Docker Image</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -t -i kalilinux/kali-linux-docker /bin/bash</div></pre></td></tr></table></figure>
+<h2 id="update-soft-source"><a href="#update-soft-source" class="headerlink" title="update soft source"></a>update soft source</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">apt-get update &amp;&amp; apt-get install metasploit-framework</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="Building-Your-Own-Kali-Linux-Docker-Image"><a href="#Building-Your-Own-Kali-Linux-Docker-Image" class="headerlink" title="Building Your Own Kali Linux Docker Image"></a>Building Your Own Kali Linux Docker Image</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">#!/bin/bash</div><div class="line"># Install dependencies (debootstrap)</div><div class="line"></div><div class="line">sudo apt-get install debootstrap</div><div class="line"># Fetch the latest Kali debootstrap script from git</div><div class="line">curl &quot;http://git.kali.org/gitweb/?p=packages/debootstrap.git;a=blob_plain;f=scripts/kali;hb=HEAD&quot; &gt; kali-debootstrap &amp;&amp;\</div><div class="line">sudo debootstrap kali ./kali-root http://http.kali.org/kali ./kali-debootstrap &amp;&amp;\</div><div class="line"></div><div class="line"># Import the Kali image into Docker</div><div class="line">sudo tar -C kali-root -c . | sudo docker import - kalilinux/kali &amp;&amp;\</div><div class="line">sudo rm -rf ./kali-root &amp;&amp;\</div><div class="line"></div><div class="line"># Test the Kali Docker Image</div><div class="line">docker run -t -i kalilinux/kali cat /etc/debian_version &amp;&amp;\</div><div class="line"></div><div class="line">echo &quot;Build OK&quot; || echo &quot;Build failed!&quot;</div></pre></td></tr></table></figure>
+<h4 id="Have-fun-with-your-Kali-Docker-images"><a href="#Have-fun-with-your-Kali-Docker-images" class="headerlink" title="Have fun with your Kali Docker images!"></a>Have fun with your Kali Docker images!</h4>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/docker/">docker</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/docker-安全-Linux/">docker 安全 Linux</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 CGerAJ
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
