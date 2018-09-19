@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>javascript代理模式 | Hexo | CGerAJ Blog</title>
+
+  
+  <meta name="author" content="CGerAJ">
+  
+
+  
+  <meta name="description" content="学而不思则罔 思而不学则殆">
+  
+
+  
+  
+  <meta name="keywords" content="设计模式">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="javascript代理模式"/>
+
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Hexo</a>
+    </h1>
+    <p class="site-description">CGerAJ Blog</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/categories">Categories</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>javascript代理模式</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/09/06/javascript代理模式/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-09-06T06:45:25.000Z">
+          2018-09-06
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Proxy &#123;</div><div class="line">  constructor (fileName) &#123;</div><div class="line">    this.fileName = fileName</div><div class="line">    this.loadFormDisk()</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  display () &#123;</div><div class="line">    console.log(&apos;display&apos; + this.fileName)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  loadFormDisk () &#123;</div><div class="line">    console.log(&apos;loading&apos; + this.fileName)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ProxyImg &#123;</div><div class="line">  constructor (fileName) &#123;</div><div class="line">    this.realImg = new Proxy(fileName)</div><div class="line">  &#125;</div><div class="line">  display () &#123;</div><div class="line">    this.realImg.display()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const proxy = new ProxyImg(&apos;1.png&apos;)</div><div class="line">proxy.display()</div></pre></td></tr></table></figure>
+<p>es6 proxy代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/javascript设计模式/">javascript设计模式</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/设计模式/">设计模式</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 CGerAJ
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

@@ -65,6 +65,218 @@
 
   
     
+    <h3 class="article-title"><a href="/2018/09/18/liunx-shell必知必会/"><span>liunx-shell必知必会</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/09/18/liunx-shell必知必会/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-09-18T13:40:22.000Z">
+          2018-09-18
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="随机获取8位字符串"><a href="#随机获取8位字符串" class="headerlink" title="随机获取8位字符串"></a>随机获取8位字符串</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 方法1</div><div class="line"> # echo $RANDOM | md5sum | cut -c 1-8</div><div class="line">// 方法2 兼容macOS</div><div class="line"> # openssl rand -base64 4</div><div class="line">// 方法三</div><div class="line">cat /proc/sys/kernel/random/uuid | cut -c 1-8</div></pre></td></tr></table></figure>
+<h2 id="随机获取8位数字"><a href="#随机获取8位数字" class="headerlink" title="随机获取8位数字"></a>随机获取8位数字</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 方法1 兼容macOS</div><div class="line"> # echo $RANDOM | cksum | cut -c 1-8</div><div class="line">// 方法2 兼容macOS</div><div class="line"> # openssl rand -base64 4 | cksum | cut -c 1-8</div><div class="line">// 方法三</div><div class="line">date +%N | cut -c 1-8</div></pre></td></tr></table></figure>
+<h2 id="定义一个颜色输出字符串函数"><a href="#定义一个颜色输出字符串函数" class="headerlink" title="定义一个颜色输出字符串函数"></a>定义一个颜色输出字符串函数</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">// 方法1</div><div class="line">function echo_color()&#123;</div><div class="line">  if[ $1 == &quot;green&quot; ]; then</div><div class="line">  echo -e &quot;\033[32;40m$2\033[0m]]&quot;</div><div class="line">  ;;</div><div class="line">  elif [ $1 === &quot;red&quot; ]; then</div><div class="line">  echo -e &quot;\033[31;40m$2\]0m&quot;</div><div class="line">  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/shell脚本/">shell脚本</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/shell脚本/">shell脚本</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/09/10/vuejs生命周期/"><span>vuejs生命周期</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/09/10/vuejs生命周期/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-09-10T05:42:51.000Z">
+          2018-09-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="VUEJS-8个生命周期"><a href="#VUEJS-8个生命周期" class="headerlink" title="VUEJS 8个生命周期"></a>VUEJS 8个生命周期</h2><p><img src="https://cn.vuejs.org/images/lifecycle.png" alt="vue生命周期图"></p>
+<h4 id="beforecreated"><a href="#beforecreated" class="headerlink" title="beforecreated"></a>beforecreated</h4><p>vue 的操作有如下几点</p>
+<ul>
+<li>new Vue 实例</li>
+<li>数据观测</li>
+<li>绑定事件</li>
+</ul>
+<p>状态 el 和 data 并未初始化 </p>
+<h4 id="created"><a href="#created" class="headerlink" title="created"></a>created</h4><p>vue 的操作有如下几点</p>
+<ul>
+<li>判断是否有el选项 有的话继续编译 没有则停止</li>
+<li>停止意味着停止了生命周期 直到vue实例调用vm.$mount(el)</li>
+<li>vue实例对象中有template参数选项，则将其作为模板编译成render函数</li>
+<li>如果没有template选项，则将外部HTML作为模板编译</li>
+<li>可以看到template中的模板优先级要高于outer HTML的优先级</li>
+</ul>
+<p>render函数选项 &gt; template选项 &gt; outer HTML</p>
+<p>完成了 data 数据的初始化，el没有</p>
+<h4 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h4><p>给vue实例对象添加$el成员，并且替换掉挂在的DOM元素。<br>完成了 el 和 data 初始化</p>
+<h4 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h4><p>完成挂载</p>
+<h4 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h4><p>当vue发现data中的数据发生了改变，会触发对应组件的重新渲染，先后调用beforeUpdate和updated钩子函数。</p>
+<h4 id="update"><a href="#update" class="headerlink" title="update"></a>update</h4><p>当vue发现data中的数据发生了改变，会触发对应组件的重新渲染，先后调用beforeUpdate和updated钩子函数。</p>
+<h4 id="beforeDestroy"><a href="#beforeDestroy" class="headerlink" title="beforeDestroy"></a>beforeDestroy</h4><ul>
+<li>销毁前</li>
+</ul>
+<h4 id="destroyed"><a href="#destroyed" class="headerlink" title="destroyed"></a>destroyed</h4><ul>
+<li>销毁后</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</div><div class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</div><div class="line">  &lt;title&gt;vue生命周期学习&lt;/title&gt;</div><div class="line">  &lt;script src=&quot;https://cdn.bootcss.com/vue/2.4.2/vue.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">    &lt;h1&gt;&#123;&#123;message&#125;&#125;&lt;/h1&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  var vm = new Vue(&#123;</div><div class="line">    el: &apos;#app&apos;,</div><div class="line">    data: &#123;</div><div class="line">      message: &apos;Vue的生命周期&apos;</div><div class="line">    &#125;,</div><div class="line">    beforeCreate: function() &#123;</div><div class="line">      console.group(&apos;------beforeCreate创建前状态------&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot; , &quot;el     : &quot; , this.$el); //undefined</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); //undefined </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message) </div><div class="line">    &#125;,</div><div class="line">    created: function() &#123;</div><div class="line">      console.group(&apos;------created创建完毕状态------&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , this.$el); //undefined</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); //已被初始化 </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message); //已被初始化</div><div class="line">    &#125;,</div><div class="line">    beforeMount: function() &#123;</div><div class="line">      console.group(&apos;------beforeMount挂载前状态------&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , (this.$el)); //已被初始化</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); //已被初始化  </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message); //已被初始化  </div><div class="line">    &#125;,</div><div class="line">    mounted: function() &#123;</div><div class="line">      console.group(&apos;------mounted 挂载结束状态------&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot;, this.$el); //已被初始化</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot;,  this.$data); //已被初始化</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot;,  this.message); //已被初始化 </div><div class="line">    &#125;,</div><div class="line">    beforeUpdate: function () &#123;</div><div class="line">      console.group(&apos;beforeUpdate 更新前状态===============》&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , this.$el);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message); </div><div class="line">    &#125;,</div><div class="line">    updated: function () &#123;</div><div class="line">      console.group(&apos;updated 更新完成状态===============》&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , this.$el);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message); </div><div class="line">    &#125;,</div><div class="line">    beforeDestroy: function () &#123;</div><div class="line">      console.group(&apos;beforeDestroy 销毁前状态===============》&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , this.$el);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message); </div><div class="line">    &#125;,</div><div class="line">    destroyed: function () &#123;</div><div class="line">      console.group(&apos;destroyed 销毁完成状态===============》&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , this.$el);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><img src="http://oh5it7vsf.bkt.clouddn.com/vue_life.png" alt="输出结果"></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/vue/">vue</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/09/06/javascript代理模式/"><span>javascript代理模式</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/09/06/javascript代理模式/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-09-06T06:45:25.000Z">
+          2018-09-06
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">class Proxy &#123;</div><div class="line">  constructor (fileName) &#123;</div><div class="line">    this.fileName = fileName</div><div class="line">    this.loadFormDisk()</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  display () &#123;</div><div class="line">    console.log(&apos;display&apos; + this.fileName)</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  loadFormDisk () &#123;</div><div class="line">    console.log(&apos;loading&apos; + this.fileName)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class ProxyImg &#123;</div><div class="line">  constructor (fileName) &#123;</div><div class="line">    this.realImg = new Proxy(fileName)</div><div class="line">  &#125;</div><div class="line">  display () &#123;</div><div class="line">    this.realImg.display()</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">const proxy = new ProxyImg(&apos;1.png&apos;)</div><div class="line">proxy.display()</div></pre></td></tr></table></figure>
+<p>es6 proxy代理</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/javascript设计模式/">javascript设计模式</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/设计模式/">设计模式</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2018/09/06/javascript装饰器模式/"><span>javascript装饰器模式</span></a></h3>
     
   
@@ -479,195 +691,6 @@
     <span class="post-tags">
       <i class="icon-tags"></i>
         <a href="/tags/nginx-docker-centos/">nginx docker centos</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2018/02/01/asciinema  docker container/"><span>asciinema bash 录制工具</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2018/02/01/asciinema  docker container/" rel="bookmark">
-        <time class="entry-date published" datetime="2018-02-01T02:13:19.174Z">
-          2018-02-01
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <p>##[工具推荐]使用docker安装asciinema 实现录制 bash 可复制视频内代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull asciinema/asciinema</div></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --rm -ti -v &quot;$HOME/.config/asciinema&quot;:/root/.config/asciinema asciinema/asciinema</div></pre></td></tr></table></figure>
-<p>//执行以上命令 进入到docker容器了 开始了录制<br>//可选择是否安装 播放工具foobar</p>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/工具应用/">工具应用</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/asciinema/">asciinema</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/12/04/mysql学习/"><span>mysql 基础学习</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/12/04/mysql学习/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-12-04T02:21:14.506Z">
-          2017-12-04
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <h2 id="mysql-学习"><a href="#mysql-学习" class="headerlink" title="mysql 学习"></a>mysql 学习</h2><p>-参考资料 <a href="http://img.jb51.net/shouce/mysql/index.html" target="_blank" rel="external">mysql在线参考手册</a></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 管理员登录mysql</div><div class="line">mysql -u root -p</div><div class="line"></div><div class="line">// 查看mysql版本号和当前日期</div><div class="line"></div><div class="line">SELECT VERSION(), CURRENT_DATE;</div></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/NodeJS/">NodeJS</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/mysql/">mysql</a>
-    </span>
-    
-
-    </div>
-
-    
-  </div>
-</article>
-
-
-
-  <article>
-
-  
-    
-    <h3 class="article-title"><a href="/2017/11/14/phpstorm设置babel，使用ES6编译ES5/"><span>phpstorm设置babel，使用ES6编译ES5</span></a></h3>
-    
-  
-
-  <div class="article-top-meta">
-    <span class="posted-on">
-      <a href="/2017/11/14/phpstorm设置babel，使用ES6编译ES5/" rel="bookmark">
-        <time class="entry-date published" datetime="2017-11-14T01:55:58.000Z">
-          2017-11-14
-        </time>
-      </a>
-    </span>
-  </div>
-
-
-  
-
-  <div class="article-content">
-    <div class="entry">
-      
-        <ul>
-<li>图片都在google图床 请自行科学上网</li>
-<li>PhpStorm 2017.2.4 / webStorm 2017.2</li>
-<li>Mac OS X 10.12.6</li>
-<li>node v8.1.2 默认已安装</li>
-<li>npm 5.5.1 默认已安装</li>
-</ul>
-<p>使用PhpStorm/webStorm自带的filewatcher中的babel自动编译前，需要安装一些babel库</p>
-<h6 id="全局安装（webstorm自动识别路径）"><a href="#全局安装（webstorm自动识别路径）" class="headerlink" title="全局安装（webstorm自动识别路径）"></a>全局安装（webstorm自动识别路径）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g babel-cli</div></pre></td></tr></table></figure>
-      
-    </div>
-
-  </div>
-
-  <div class="article-footer">
-    <div class="article-meta pull-left">
-
-    
-      
-
-    <span class="post-categories">
-      <i class="icon-categories"></i>
-        <a href="/categories/工具应用/">工具应用</a>
-    </span>
-    
-
-    
-    
-
-    <span class="post-tags">
-      <i class="icon-tags"></i>
-        <a href="/tags/ES6-javascript-babel/">ES6 javascript babel</a>
     </span>
     
 

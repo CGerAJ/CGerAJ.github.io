@@ -1,0 +1,170 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>vuejs生命周期 | Hexo | CGerAJ Blog</title>
+
+  
+  <meta name="author" content="CGerAJ">
+  
+
+  
+  <meta name="description" content="学而不思则罔 思而不学则殆">
+  
+
+  
+  
+  <meta name="keywords" content="vue">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="vuejs生命周期"/>
+
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Hexo</a>
+    </h1>
+    <p class="site-description">CGerAJ Blog</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/categories">Categories</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>vuejs生命周期</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/09/10/vuejs生命周期/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-09-10T05:42:51.000Z">
+          2018-09-10
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="VUEJS-8个生命周期"><a href="#VUEJS-8个生命周期" class="headerlink" title="VUEJS 8个生命周期"></a>VUEJS 8个生命周期</h2><p><img src="https://cn.vuejs.org/images/lifecycle.png" alt="vue生命周期图"></p>
+<h4 id="beforecreated"><a href="#beforecreated" class="headerlink" title="beforecreated"></a>beforecreated</h4><p>vue 的操作有如下几点</p>
+<ul>
+<li>new Vue 实例</li>
+<li>数据观测</li>
+<li>绑定事件</li>
+</ul>
+<p>状态 el 和 data 并未初始化 </p>
+<h4 id="created"><a href="#created" class="headerlink" title="created"></a>created</h4><p>vue 的操作有如下几点</p>
+<ul>
+<li>判断是否有el选项 有的话继续编译 没有则停止</li>
+<li>停止意味着停止了生命周期 直到vue实例调用vm.$mount(el)</li>
+<li>vue实例对象中有template参数选项，则将其作为模板编译成render函数</li>
+<li>如果没有template选项，则将外部HTML作为模板编译</li>
+<li>可以看到template中的模板优先级要高于outer HTML的优先级</li>
+</ul>
+<p>render函数选项 &gt; template选项 &gt; outer HTML</p>
+<p>完成了 data 数据的初始化，el没有</p>
+<h4 id="beforeMount"><a href="#beforeMount" class="headerlink" title="beforeMount"></a>beforeMount</h4><p>给vue实例对象添加$el成员，并且替换掉挂在的DOM元素。<br>完成了 el 和 data 初始化</p>
+<h4 id="mounted"><a href="#mounted" class="headerlink" title="mounted"></a>mounted</h4><p>完成挂载</p>
+<h4 id="beforeUpdate"><a href="#beforeUpdate" class="headerlink" title="beforeUpdate"></a>beforeUpdate</h4><p>当vue发现data中的数据发生了改变，会触发对应组件的重新渲染，先后调用beforeUpdate和updated钩子函数。</p>
+<h4 id="update"><a href="#update" class="headerlink" title="update"></a>update</h4><p>当vue发现data中的数据发生了改变，会触发对应组件的重新渲染，先后调用beforeUpdate和updated钩子函数。</p>
+<h4 id="beforeDestroy"><a href="#beforeDestroy" class="headerlink" title="beforeDestroy"></a>beforeDestroy</h4><ul>
+<li>销毁前</li>
+</ul>
+<h4 id="destroyed"><a href="#destroyed" class="headerlink" title="destroyed"></a>destroyed</h4><ul>
+<li>销毁后</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html lang=&quot;en&quot;&gt;</div><div class="line">&lt;head&gt;</div><div class="line">  &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">  &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;</div><div class="line">  &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;ie=edge&quot;&gt;</div><div class="line">  &lt;title&gt;vue生命周期学习&lt;/title&gt;</div><div class="line">  &lt;script src=&quot;https://cdn.bootcss.com/vue/2.4.2/vue.js&quot;&gt;&lt;/script&gt;</div><div class="line">&lt;/head&gt;</div><div class="line">&lt;body&gt;</div><div class="line">  &lt;div id=&quot;app&quot;&gt;</div><div class="line">    &lt;h1&gt;&#123;&#123;message&#125;&#125;&lt;/h1&gt;</div><div class="line">  &lt;/div&gt;</div><div class="line">&lt;/body&gt;</div><div class="line">&lt;script&gt;</div><div class="line">  var vm = new Vue(&#123;</div><div class="line">    el: &apos;#app&apos;,</div><div class="line">    data: &#123;</div><div class="line">      message: &apos;Vue的生命周期&apos;</div><div class="line">    &#125;,</div><div class="line">    beforeCreate: function() &#123;</div><div class="line">      console.group(&apos;------beforeCreate创建前状态------&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot; , &quot;el     : &quot; , this.$el); //undefined</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); //undefined </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message) </div><div class="line">    &#125;,</div><div class="line">    created: function() &#123;</div><div class="line">      console.group(&apos;------created创建完毕状态------&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , this.$el); //undefined</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); //已被初始化 </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message); //已被初始化</div><div class="line">    &#125;,</div><div class="line">    beforeMount: function() &#123;</div><div class="line">      console.group(&apos;------beforeMount挂载前状态------&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , (this.$el)); //已被初始化</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); //已被初始化  </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message); //已被初始化  </div><div class="line">    &#125;,</div><div class="line">    mounted: function() &#123;</div><div class="line">      console.group(&apos;------mounted 挂载结束状态------&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot;, this.$el); //已被初始化</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot;,  this.$data); //已被初始化</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot;,  this.message); //已被初始化 </div><div class="line">    &#125;,</div><div class="line">    beforeUpdate: function () &#123;</div><div class="line">      console.group(&apos;beforeUpdate 更新前状态===============》&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , this.$el);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message); </div><div class="line">    &#125;,</div><div class="line">    updated: function () &#123;</div><div class="line">      console.group(&apos;updated 更新完成状态===============》&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , this.$el);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message); </div><div class="line">    &#125;,</div><div class="line">    beforeDestroy: function () &#123;</div><div class="line">      console.group(&apos;beforeDestroy 销毁前状态===============》&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , this.$el);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message); </div><div class="line">    &#125;,</div><div class="line">    destroyed: function () &#123;</div><div class="line">      console.group(&apos;destroyed 销毁完成状态===============》&apos;);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;el     : &quot; , this.$el);</div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;data   : &quot; , this.$data); </div><div class="line">      console.log(&quot;%c%s&quot;, &quot;color:red&quot;,&quot;message: &quot; , this.message)</div><div class="line">    &#125;</div><div class="line">  &#125;)</div><div class="line">&lt;/script&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<p><img src="http://oh5it7vsf.bkt.clouddn.com/vue_life.png" alt="输出结果"></p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/vue/">vue</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/vue/">vue</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 CGerAJ
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>

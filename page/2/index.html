@@ -65,6 +65,195 @@
 
   
     
+    <h3 class="article-title"><a href="/2018/02/01/asciinema  docker container/"><span>asciinema bash 录制工具</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/02/01/asciinema  docker container/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-02-01T02:13:19.174Z">
+          2018-02-01
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>##[工具推荐]使用docker安装asciinema 实现录制 bash 可复制视频内代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull asciinema/asciinema</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run --rm -ti -v &quot;$HOME/.config/asciinema&quot;:/root/.config/asciinema asciinema/asciinema</div></pre></td></tr></table></figure>
+<p>//执行以上命令 进入到docker容器了 开始了录制<br>//可选择是否安装 播放工具foobar</p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工具应用/">工具应用</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/asciinema/">asciinema</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/12/04/mysql学习/"><span>mysql 基础学习</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/12/04/mysql学习/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-12-04T02:21:14.506Z">
+          2017-12-04
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="mysql-学习"><a href="#mysql-学习" class="headerlink" title="mysql 学习"></a>mysql 学习</h2><p>-参考资料 <a href="http://img.jb51.net/shouce/mysql/index.html" target="_blank" rel="external">mysql在线参考手册</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">// 管理员登录mysql</div><div class="line">mysql -u root -p</div><div class="line"></div><div class="line">// 查看mysql版本号和当前日期</div><div class="line"></div><div class="line">SELECT VERSION(), CURRENT_DATE;</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/NodeJS/">NodeJS</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/mysql/">mysql</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2017/11/14/phpstorm设置babel，使用ES6编译ES5/"><span>phpstorm设置babel，使用ES6编译ES5</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2017/11/14/phpstorm设置babel，使用ES6编译ES5/" rel="bookmark">
+        <time class="entry-date published" datetime="2017-11-14T01:55:58.000Z">
+          2017-11-14
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <ul>
+<li>图片都在google图床 请自行科学上网</li>
+<li>PhpStorm 2017.2.4 / webStorm 2017.2</li>
+<li>Mac OS X 10.12.6</li>
+<li>node v8.1.2 默认已安装</li>
+<li>npm 5.5.1 默认已安装</li>
+</ul>
+<p>使用PhpStorm/webStorm自带的filewatcher中的babel自动编译前，需要安装一些babel库</p>
+<h6 id="全局安装（webstorm自动识别路径）"><a href="#全局安装（webstorm自动识别路径）" class="headerlink" title="全局安装（webstorm自动识别路径）"></a>全局安装（webstorm自动识别路径）</h6><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g babel-cli</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/工具应用/">工具应用</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/ES6-javascript-babel/">ES6 javascript babel</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
     <h3 class="article-title"><a href="/2017/10/16/macOs 调试安卓设备 adb 调试工具步骤/"><span>macOs 调试安卓设备 adb 调试工具步骤</span></a></h3>
     
   
