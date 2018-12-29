@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Page 2 | Hexo | CGerAJ Blog</title>
+  <title>第 2 页 | Hexo | CGerAJ Blog</title>
 
   
   <meta name="author" content="CGerAJ">
@@ -47,13 +47,13 @@
   <nav class="site-navigation">
     <ul>
       
-        <li><a href="/">Home</a></li>
+        <li><a href="/">主页</a></li>
       
-        <li><a href="/archives">Archives</a></li>
+        <li><a href="/archives">归档</a></li>
       
-        <li><a href="/categories">Categories</a></li>
+        <li><a href="/categories">分类</a></li>
       
-        <li><a href="/tags">Tags</a></li>
+        <li><a href="/tags">标签</a></li>
       
     </ul>
   </nav>
@@ -61,6 +61,126 @@
 
     <main class="site-main posts-loop">
     
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/09/01/javascript简单工厂模式/"><span>javascript简单工厂模式</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/09/01/javascript简单工厂模式/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-09-01T02:58:03.000Z">
+          2018-09-01
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <p>直接上代码</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div></pre></td><td class="code"><pre><div class="line">class Product &#123;</div><div class="line">  constructor(config) &#123;</div><div class="line">    this.config = config</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  init() &#123;</div><div class="line">    console.log(&quot;init&quot;);</div><div class="line">    console.log(this.config)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Cake extends Product &#123;</div><div class="line">  constructor(config) &#123;</div><div class="line">    super()</div><div class="line">    this.config = config</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  init() &#123;</div><div class="line">    console.log(&quot;cake&quot;);</div><div class="line">    console.log(this.config)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"></div><div class="line">class Food extends Product &#123;</div><div class="line">  constructor(config) &#123;</div><div class="line">    super()</div><div class="line">    this.config = config</div><div class="line">  &#125;</div><div class="line"></div><div class="line">  init() &#123;</div><div class="line">    console.log(&quot;food&quot;);</div><div class="line">    console.log(this.config)</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">class Factory &#123;</div><div class="line">  create(model, config) &#123;</div><div class="line">    switch (model) &#123;</div><div class="line">      case &quot;product&quot;:</div><div class="line">        return new Product(config);</div><div class="line">      case &quot;cake&quot;:</div><div class="line">        return new Cake(config);</div><div class="line">      case &quot;food&quot;:</div><div class="line">        return new Food(config)</div><div class="line">      default:</div><div class="line">         console.error(&quot;参数错误！&quot;)</div><div class="line">         return false;</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line">// test</div><div class="line">let creator = new Factory()</div><div class="line">let product1 = creator.create(&quot;product&quot;, &#123; &quot;config&quot;: &quot;product&quot; &#125;)</div><div class="line">product1.init()</div><div class="line"></div><div class="line">let cake = creator.create(&quot;cake&quot;, &#123; &quot;config&quot;: &quot;cake&quot; &#125;)</div><div class="line">cake.init()</div><div class="line"></div><div class="line">let food = creator.create(&quot;food&quot;, &#123; &quot;config&quot;: &quot;food&quot; &#125;)</div><div class="line">food.init()</div></pre></td></tr></table></figure>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/javascript设计模式/">javascript设计模式</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/设计模式/">设计模式</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
+  <article>
+
+  
+    
+    <h3 class="article-title"><a href="/2018/07/17/前端小白 的 docker 配置nginx踩坑之旅/"><span>docker配置nginx踩坑之旅</span></a></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/07/17/前端小白 的 docker 配置nginx踩坑之旅/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-07-17T02:22:10.057Z">
+          2018-07-17
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">//查看系统版本</div><div class="line">lsb_release -a</div><div class="line"></div><div class="line">//输出</div><div class="line">LSB Version:	:core-4.1-amd64:core-4.1-noarch</div><div class="line">Distributor ID:	CentOS</div><div class="line">Description:	CentOS Linux release 7.5.1804 (Core)</div><div class="line">Release:	7.5.1804</div><div class="line">Codename:	Core</div></pre></td></tr></table></figure>
+<p>##docker 安装及pull镜像不表(具体参考官方文档)</p>
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/docker/">docker</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/nginx-docker-centos/">nginx docker centos</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+
   <article>
 
   
@@ -514,7 +634,7 @@
 
 <nav class="pagination">
   
-  <a href="/" class="pagination-prev">Prev</a>
+  <a href="/" class="pagination-prev">上一页</a>
   
   
 </nav>

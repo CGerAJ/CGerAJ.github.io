@@ -1,0 +1,182 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pm2一键部署 | Hexo | CGerAJ Blog</title>
+
+  
+  <meta name="author" content="CGerAJ">
+  
+
+  
+  <meta name="description" content="学而不思则罔 思而不学则殆">
+  
+
+  
+  
+  <meta name="keywords" content="工具应用 nodejs">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="pm2一键部署"/>
+
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Hexo</a>
+    </h1>
+    <p class="site-description">CGerAJ Blog</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">主页</a></li>
+      
+        <li><a href="/archives">归档</a></li>
+      
+        <li><a href="/categories">分类</a></li>
+      
+        <li><a href="/tags">标签</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>pm2一键部署</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2018/12/29/pm2一键部署/" rel="bookmark">
+        <time class="entry-date published" datetime="2018-12-29T11:27:51.000Z">
+          2018-12-29
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h2 id="方案选型"><a href="#方案选型" class="headerlink" title="方案选型"></a>方案选型</h2><ul>
+<li>webhook </li>
+<li>pm2</li>
+<li>jenkins</li>
+</ul>
+<p>1.webhook 自己写shell脚本。当然也可以写node脚本，webhook自动部署是有优势的 没有选型是因为不够智能化，运维经验没那么丰富。</p>
+<p>2.没有选jenkins是因为太重了，只需要部署后台，不需要部署前台，前台是app端，<br>其次涉及到gitlab等等各方面的原因，业务发展以后有机会选jenkins的。</p>
+<p>3.pm2相对来说成本低 一键发布 选型pm2的原因是借助pm2各种生态能满足我们的需求。</p>
+<h2 id="node环境和服务器配置"><a href="#node环境和服务器配置" class="headerlink" title="node环境和服务器配置"></a>node环境和服务器配置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">centos CentOS Linux release 7.2.1511 (Core)</div><div class="line">node v11.6.0</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div></pre></td><td class="code"><pre><div class="line">1.安装nvm</div><div class="line">http://nvm.sh/</div><div class="line"></div><div class="line"></div><div class="line">To install or update nvm, you can use the install script using cURL:</div><div class="line"></div><div class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</div><div class="line">or Wget:</div><div class="line"></div><div class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.11/install.sh | bash</div><div class="line"></div><div class="line"></div><div class="line">2.设置nvm环境变量</div><div class="line"></div><div class="line">export NVM_DIR=&quot;$&#123;XDG_CONFIG_HOME/:-$HOME/.&#125;nvm&quot;</div><div class="line">[ -s &quot;$NVM_DIR/nvm.sh&quot; ] &amp;&amp; \. &quot;$NVM_DIR/nvm.sh&quot; # This loads nvm</div><div class="line"></div><div class="line">// 不要忽略了重启bash</div><div class="line">source ~/.bashrc</div><div class="line"></div><div class="line">3.安装nodejs</div><div class="line"></div><div class="line">nvm install x.x.x 版本根据项目自己选</div><div class="line"></div><div class="line">// 此时node环境准备完毕</div><div class="line"></div><div class="line">4.服务端和本地都需要安装pm2</div><div class="line"></div><div class="line">npm install pm2 -g</div><div class="line"></div><div class="line">5.部署公钥</div><div class="line">官方文档 https://pm2.io/doc/en/runtime/guide/easy-deploy-with-ssh/</div><div class="line"></div><div class="line">生成的公钥</div><div class="line">生成的id_rsa.pub公钥-&gt;添加到服务端</div><div class="line">生成的id_rsa.pub公钥-&gt;添加到git项目ssh——key 配置</div><div class="line">具体不表</div></pre></td></tr></table></figure>
+<h1 id="项目生成pm2-部署配置"><a href="#项目生成pm2-部署配置" class="headerlink" title="项目生成pm2 部署配置"></a>项目生成pm2 部署配置</h1><p>pm2 ecosystem</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div><div class="line">61</div><div class="line">62</div><div class="line">63</div><div class="line">64</div><div class="line">65</div><div class="line">66</div><div class="line">67</div><div class="line">68</div><div class="line">69</div><div class="line">70</div><div class="line">71</div><div class="line">72</div><div class="line">73</div><div class="line">74</div><div class="line">75</div><div class="line">76</div><div class="line">77</div><div class="line">78</div><div class="line">79</div><div class="line">80</div><div class="line">81</div><div class="line">82</div><div class="line">83</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">module.exports = &#123;</div><div class="line">  /**</div><div class="line">   * Application configuration section</div><div class="line">   * http://pm2.keymetrics.io/docs/usage/application-declaration/</div><div class="line">   */</div><div class="line">  apps : [</div><div class="line"></div><div class="line">    // First application</div><div class="line">    &#123;</div><div class="line">      name      : &apos;app&apos;,</div><div class="line">      script    : &apos;./build/server.js&apos;, // 需要执行启动的文件</div><div class="line">      env: &#123;</div><div class="line">        COMMON_VARIABLE: &apos;true&apos;</div><div class="line">      &#125;,</div><div class="line">      env_production : &#123;</div><div class="line">        NODE_ENV: &apos;production&apos;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line"></div><div class="line">    // Second application</div><div class="line">    // &#123;</div><div class="line">    //   name      : &apos;WEB&apos;,</div><div class="line">    //   script    : &apos;web.js&apos;</div><div class="line">    // &#125;</div><div class="line">    </div><div class="line">  ],</div><div class="line"></div><div class="line">  /**</div><div class="line">   * Deployment section</div><div class="line">   * http://pm2.keymetrics.io/docs/usage/deployment/</div><div class="line">   * production / release 配置</div><div class="line">   */</div><div class="line">  deploy : &#123;</div><div class="line">    production : &#123;</div><div class="line">      user : &apos;root&apos;,</div><div class="line">      host : [&apos;xxx.xxx.xxx.xxx&apos;],</div><div class="line">      ref  : &apos;origin/master&apos;,</div><div class="line">      ssh_options: &apos;StrictHostKeyChecking=no&apos;,</div><div class="line">      repo : &apos;git@github.com:xxx.git&apos;,</div><div class="line">      path : &apos;/home/pm2-deploy/xxx/production&apos;,</div><div class="line">      &quot;post-setup&quot;: &quot;yarn install --production &amp;&amp; npm install grunt --save-dev  &amp;&amp; export NODE_DEPLOY_ENV=production &amp;&amp; grunt build &amp;&amp;  forever start -a -l forever.log -o out.log -e err.log build/server.js&quot;,</div><div class="line">      &apos;post-deploy&apos; : &apos;ls&apos;,</div><div class="line">      &quot;pre-deploy-local&quot;: &quot;echo &apos;Deploy Done&apos;&quot;,</div><div class="line">      env: &#123;</div><div class="line">        &apos;NODE_ENV&apos;: &apos;production&apos;</div><div class="line">      &#125;</div><div class="line">    &#125;,</div><div class="line">    /**</div><div class="line">     * [release]</div><div class="line">     * @type &#123;Object&#125;</div><div class="line">     * 上线由版本release分支 产生test分支 push release/test 到远程git服务器</div><div class="line">     * ref 具体需要部署的远程git分支 建议使用test 一次部署一个分支</div><div class="line">     */</div><div class="line">    release : &#123;</div><div class="line">      user : &apos;root&apos;, // 用户</div><div class="line">      host : [&apos;xxx.xxx.xxx.xxx&apos;], // 远程服务器地址</div><div class="line">      ref  : &apos;origin/release/test&apos;, // 分支</div><div class="line">      ssh_options: &apos;StrictHostKeyChecking=no&apos;, </div><div class="line">      repo : &apos;git@github.com:xxx.git&apos;, // git 地址</div><div class="line">      path : &apos;/home/pm2-deploy/xxx/release&apos;, // 远程服务器路径</div><div class="line">      &quot;post-setup&quot;: &quot;yarn install --production &amp;&amp; npm install grunt --save-dev  &amp;&amp; grunt build &amp;&amp; forever start -a -l forever.log -o out.log -e err.log build/server.js&quot;, // 远程服务器部署前执行的脚本</div><div class="line">      &apos;post-deploy&apos; : &apos;ls&apos;, // 部署后执行的脚本</div><div class="line">      &quot;pre-deploy-local&quot;: &quot;echo &apos;Deploy Done&apos;&quot;,</div><div class="line">      env  : &#123;</div><div class="line">        &apos;NODE_ENV&apos;: &apos;release&apos;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">  &#125;,</div><div class="line">&#125;;</div><div class="line"></div><div class="line">此处有脚本执行钩子的流程</div><div class="line"></div><div class="line">pre-setup 钩子</div><div class="line">// Pre-setup command or path to a script on your local machine</div><div class="line">Post-setup 钩子</div><div class="line">Post-setup commands or path to a script on the host machine</div><div class="line">      // eg: placing configurations in the shared dir etc</div><div class="line"></div><div class="line">// pre-deploy 钩子</div><div class="line">pre-deploy-local</div><div class="line">// post-deploy 钩子</div><div class="line">post-deploy</div></pre></td></tr></table></figure>
+<p>注意事项（踩坑）</p>
+<p>1.经过测试pm2 -version 3.2.4</p>
+<p>post-deploy钩子和 pre-deploy-local钩子 并不会执行 或许我姿势不对</p>
+<p>2.由于老项目 最后用的forerver 运行的最终项目 这个地方可以随时切到pm2环境上 改下命令即可<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">forever start -a -l forever.log -o out.log -e err.log build/server.js</div></pre></td></tr></table></figure></p>
+<p>3.整体项目mster分支 部署流程 代码执行的经过 </p>
+<ul>
+<li>git-flow 完成release代码 合并代码到本地master和develop push到远程master 和develop分支</li>
+<li>首次部署执行npm run deploy  自动克隆代码到指定目录 / 二次部署执行 npm run  prod</li>
+<li>远程自动执行yarn install –production </li>
+<li>远程自动执行npm install grunt –save-dev 避免安装依赖导致部署失败</li>
+<li>构建时数据库的切换至其他数据库 具体查看node环境变量export NODE_DEPLOY_ENV=production</li>
+<li>远程自动执行grunt build 打包项目</li>
+<li>远程自动执行forever start -a -l forever.log -o out.log -e err.log build/server.js 部署项目</li>
+</ul>
+<p>4.整体项目测试分支 部署流程只有第一步第二步有差异 代码执行的经过</p>
+<ul>
+<li>git-flow push release/test 到远程 所有人在这个分支修复版本bug </li>
+<li>首次部署执行npm run release 自动克隆代码到指定目录 / 二次部署执行 npm run  releaseTest</li>
+<li>远程自动执行yarn install –production </li>
+<li>远程自动执行npm install grunt –save-dev 避免安装依赖导致部署失败</li>
+<li>构建时数据库的切换至其他数据库 具体查看node环境变量export NODE_DEPLOY_ENV=production</li>
+<li>远程自动执行grunt build 打包项目</li>
+<li>远程自动执行forever start -a -l forever.log -o out.log -e err.log build/server.js 部署项目</li>
+</ul>
+<p>5.没有考虑周全的地方</p>
+<ul>
+<li>export NODE_DEPLOY_ENV=production 环境变量打到不同的数据库没有做自动的管理</li>
+<li>项目部署还需要多多测试</li>
+<li>没有吧测试版本完全独立出来 社区有更好的基于docker-compose的方案 让数据库和环境一起更新</li>
+</ul>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/pm2-nodejs/">pm2 nodejs</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/工具应用-nodejs/">工具应用 nodejs</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2018 CGerAJ
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
