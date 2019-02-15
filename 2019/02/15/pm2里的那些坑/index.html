@@ -1,0 +1,154 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>pm2里的那些坑 | Hexo | CGerAJ Blog</title>
+
+  
+  <meta name="author" content="CGerAJ">
+  
+
+  
+  <meta name="description" content="学而不思则罔 思而不学则殆">
+  
+
+  
+  
+  <meta name="keywords" content="pm2">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="pm2里的那些坑"/>
+
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Hexo</a>
+    </h1>
+    <p class="site-description">CGerAJ Blog</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/categories">Categories</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>pm2里的那些坑</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/02/15/pm2里的那些坑/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-02-15T02:42:19.000Z">
+          2019-02-15
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <h4 id="大坑1-cluster2个进程status为error但是服务可访问"><a href="#大坑1-cluster2个进程status为error但是服务可访问" class="headerlink" title="大坑1 cluster2个进程status为error但是服务可访问"></a>大坑1 cluster2个进程status为error但是服务可访问</h4><p>cluster2个进程 status 为error  but 服务器显示接口是可以访问的（没有缓存层。<br>pm2 report分析得到，每正常访问一次 restart 重启 原因不明。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">$ pm2 list</div><div class="line">┌──────────┬────┬─────────┬─────────┬─────┬─────────┬─────────┬────────┬─────┬────────┬───────┬──────────┐</div><div class="line">│ App name │ id │ version │ mode    │ pid │ status  │ restart │ uptime │ cpu │ mem    │ user  │ watching │</div><div class="line">├──────────┼────┼─────────┼─────────┼─────┼─────────┼─────────┼────────┼─────┼────────┼───────┼──────────┤</div><div class="line">│ share    │ 4  │ 0.0.0   │ cluster │ 0   │ errored │ 24376   │ 0      │ 0%  │ 0 B    │ wanli │ enabled  │</div><div class="line">│ share    │ 5  │ 0.0.0   │ cluster │ 0   │ errored │ 22455   │ 0      │ 0%  │ 0 B    │ wanli │ enabled  │</div><div class="line">└──────────┴────┴─────────┴─────────┴─────┴─────────┴─────────┴────────┴─────┴────────┴───────┴──────────┘</div><div class="line">Module</div><div class="line">┌──────────────┬────┬─────────┬───────┬────────┬─────────┬─────┬───────────┬───────┐</div><div class="line">│ Module       │ id │ version │ pid   │ status │ restart │ cpu │ memory    │ user  │</div><div class="line">├──────────────┼────┼─────────┼───────┼────────┼─────────┼─────┼───────────┼───────┤</div><div class="line">│ pm2-intercom │ 3  │ 1.0.0   │ 10044 │ online │ 0       │ 0%  │ 58.7 MB   │ wanli</div></pre></td></tr></table></figure>
+<h5 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h5><p>降级，换成fork模式，稳定优先。</p>
+<h4 id="大坑2-cluster模式日志mac开发环境和centos环境日志输出不一致"><a href="#大坑2-cluster模式日志mac开发环境和centos环境日志输出不一致" class="headerlink" title="大坑2 cluster模式日志mac开发环境和centos环境日志输出不一致"></a>大坑2 cluster模式日志mac开发环境和centos环境日志输出不一致</h4><p>cluster模式日志mac开发环境和centos环境日志输出不一致，平台环境的问题，无论如何配置 cluster模式的日志,会有问题。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">// centos下输出日志</div><div class="line">$ tree</div><div class="line">├── access-2</div><div class="line">│   └── 14</div><div class="line">│       ├── 2019.log</div><div class="line">│       └── 2019.log-2019-02-14.gz</div><div class="line">├── combined.outerr.log</div><div class="line">├── errorFile-2</div><div class="line">│   └── 14</div><div class="line">│       └── 2019.log</div><div class="line">├── error.log</div><div class="line">└── out.log</div><div class="line">4 directories, 6 files</div><div class="line"></div><div class="line">// mac 下输出日志</div><div class="line"></div><div class="line">├── access-2019-2-15.log</div><div class="line">├── combined.outerr-21.log</div><div class="line">├── error-21.log</div><div class="line">├── errorFile-2019-2-15.log</div><div class="line">└── out-21.log</div><div class="line">0 directories, 5 files</div></pre></td></tr></table></figure>
+<h5 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h5><p>切换fork模式  当日日志配置正常。（有坑 见大坑3）</p>
+<a id="more"></a>
+<h4 id="大坑3-fork模式当日日志输出正常，第二日日志输出不正常。"><a href="#大坑3-fork模式当日日志输出正常，第二日日志输出不正常。" class="headerlink" title="大坑3 fork模式当日日志输出正常，第二日日志输出不正常。"></a>大坑3 fork模式当日日志输出正常，第二日日志输出不正常。</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">// 我想要的日志输出为以下格式，每日log4js-node 自动压缩为一个日志文件</div><div class="line">access-2019-2-14.log</div><div class="line">access-2019-2-15.log</div><div class="line">access-2019-2-16.log</div><div class="line">...</div><div class="line"></div><div class="line">errorFile-2019-2-14.log</div><div class="line">errorFile-2019-2-15.log</div><div class="line">errorFile-2019-2-16.log</div><div class="line">...</div></pre></td></tr></table></figure>
+<p>结果是每日日志正常，第二日必须手动重启pm2 真是太心酸了，我不能每天12点 等着服务器吧</p>
+<h5 id="解决方案-2"><a href="#解决方案-2" class="headerlink" title="解决方案"></a>解决方案</h5><p>使用 node-schedule 模块<br><a href="https://github.com/node-schedule/node-schedule" target="_blank" rel="external">https://github.com/node-schedule/node-schedule</a></p>
+<p>每日执行 定时脚本 自动重启服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">const exec = require(&apos;child_process&apos;).exec</div><div class="line"></div><div class="line">const child = exec(&apos;pm2 restart share&apos;, (err, stdout, stderr) =&gt; &#123;</div><div class="line">  if (err) throw err</div><div class="line">  console.log(stdout)</div><div class="line">&#125;)</div></pre></td></tr></table></figure>
+<h4 id="大坑4-pm2启用自动远程部署的时候-预执行钩子不运行的情况"><a href="#大坑4-pm2启用自动远程部署的时候-预执行钩子不运行的情况" class="headerlink" title="大坑4 pm2启用自动远程部署的时候 预执行钩子不运行的情况"></a>大坑4 pm2启用自动远程部署的时候 预执行钩子不运行的情况</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">// 具体问题查看这篇文章</div><div class="line">https://cgeraj.github.io/2018/12/29/pm2%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2/</div></pre></td></tr></table></figure>
+<h5 id="解决方案-3"><a href="#解决方案-3" class="headerlink" title="解决方案"></a>解决方案</h5><p>自部署jenkins服务 使用jenkins服务做自动化部署</p>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/nodejs-pm2-部署/">nodejs pm2 部署</a>
+    </span>
+    
+
+    
+    
+
+    <span class="post-tags">
+      <i class="icon-tags"></i>
+        <a href="/tags/pm2/">pm2</a>
+    </span>
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 CGerAJ
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
