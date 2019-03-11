@@ -1,0 +1,134 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>mysql 用户设置和docker备份数据库 | Hexo | CGerAJ Blog</title>
+
+  
+  <meta name="author" content="CGerAJ">
+  
+
+  
+  <meta name="description" content="学而不思则罔 思而不学则殆">
+  
+
+  
+  
+  <meta name="keywords" content="">
+  
+
+  <meta id="viewport" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+  <meta property="og:title" content="mysql 用户设置和docker备份数据库"/>
+
+  <meta property="og:site_name" content="Hexo"/>
+
+  
+  <meta property="og:image" content="/favicon.ico"/>
+  
+
+  <link href="/favicon.ico" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+</head>
+
+
+<body>
+<div class="blog">
+  <div class="content">
+
+    <header>
+  <div class="site-branding">
+    <h1 class="site-title">
+      <a href="/">Hexo</a>
+    </h1>
+    <p class="site-description">CGerAJ Blog</p>
+  </div>
+  <nav class="site-navigation">
+    <ul>
+      
+        <li><a href="/">Home</a></li>
+      
+        <li><a href="/archives">Archives</a></li>
+      
+        <li><a href="/categories">Categories</a></li>
+      
+        <li><a href="/tags">Tags</a></li>
+      
+    </ul>
+  </nav>
+</header>
+
+    <main class="site-main posts-loop">
+    <article>
+
+  
+    
+    <h3 class="article-title"><span>mysql 用户设置和docker备份数据库</span></h3>
+    
+  
+
+  <div class="article-top-meta">
+    <span class="posted-on">
+      <a href="/2019/03/06/mysql 用户设置和复制docker内部文件/" rel="bookmark">
+        <time class="entry-date published" datetime="2019-03-06T04:32:51.000Z">
+          2019-03-06
+        </time>
+      </a>
+    </span>
+  </div>
+
+
+  
+
+  <div class="article-content">
+    <div class="entry">
+      
+        <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"># 创建mysql用户</div><div class="line">CREATE USER &apos;USR&apos;@&apos;%&apos; IDENTIFIED BY &apos;PWD&apos;;</div><div class="line"># 权限配置</div><div class="line">GRANT ALL ON *.* TO &apos;USR&apos;@&apos;%&apos;;</div><div class="line"></div><div class="line">docker 导出mysql数据</div><div class="line">docker exec -it CONTAINER_NAME mysqldump -uUSR -pPWD MYSQL_TABNAME &gt; /DIR/backup.sql</div><div class="line"></div><div class="line">docker 导入mysql数据</div><div class="line">docker exec -i CONTAINER_NAME mysql -uUSR -pPWD MYSQL_TABNAME &lt; /DIR/backup.sql</div></pre></td></tr></table></figure>
+
+      
+    </div>
+
+  </div>
+
+  <div class="article-footer">
+    <div class="article-meta pull-left">
+
+    
+      
+
+    <span class="post-categories">
+      <i class="icon-categories"></i>
+        <a href="/categories/mysql-docker/">mysql docker</a>
+    </span>
+    
+
+    
+
+    </div>
+
+    
+  </div>
+</article>
+
+
+    </main>
+
+    <footer class="site-footer">
+  <p class="site-info">
+    Proudly powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and
+    Theme by <a href="https://github.com/CodeDaraW/Hacker" target="_blank">Hacker</a>
+    </br>
+    
+    &copy; 2019 CGerAJ
+    
+  </p>
+</footer>
+    
+  </div>
+</div>
+</body>
+</html>
